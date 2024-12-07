@@ -2,6 +2,7 @@
   
   # System packages
   environment.systemPackages = with pkgs; [ 
+    awscli2
     bat
     bat-extras.batman
     bat-extras.batgrep
@@ -21,12 +22,14 @@
     jq
     jqp
     inputs.home-manager.packages.${pkgs.system}.default
+    mas
     mise
     neofetch
     neovim
     nushell
     openssh
     ripgrep
+    slack-cli
     starship
     stow
     tig
@@ -44,10 +47,6 @@
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
     onActivation.autoUpdate = true;
-    brews = [
-      "awscli"
-      "mas"
-    ];
     casks = [
       "alacritty"
       "copilot"

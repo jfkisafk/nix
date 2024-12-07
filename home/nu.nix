@@ -6,15 +6,16 @@
       show_banner: false
     }
 
-    $env.PATH = ($env.PATH | 
-      split row (char esep) | 
-      prepend /usr/bin/env |
-      prepend /run/current-system/sw/bin |
-      prepend $"($env.HOME)/.nix-profile/bin" |
-      prepend "/nix/var/nix/profiles/default/bin" |
-      prepend "/run/current-system/sw/bin" |
-      prepend "/etc/profiles/per-user/$env.USER/bin" |
-      append /opt/homebrew/bin)
+    # Preserve existing PATH and add our additional paths
+    $env.PATH = ([
+      "/usr/bin/env"
+      "/run/current-system/sw/bin"
+      $"($env.HOME)/.nix-profile/bin"
+      "/nix/var/nix/profiles/default/bin"
+      "/run/current-system/sw/bin"
+      $"/etc/profiles/per-user/($env.USER)/bin"
+      "/opt/homebrew/bin"
+    ] | append ($env.PATH | default [] | split row (char esep)) | uniq)
 
     # Activate mise
     mise activate nu | str trim | nu -c $in
@@ -23,13 +24,17 @@
     let mise_env = (mise env --json | from json)
     for entry in ($mise_env | columns) {
         if $entry == "PATH" {
-            $env.PATH = ($mise_env | get PATH | split row ":" | 
-                append ($env.PATH | split row (char esep)))
+            # Merge PATH entries, removing duplicates
+            $env.PATH = (
+                ($mise_env | get PATH | split row ":" | 
+                append $env.PATH) | uniq
+            )
         } else {
             load-env {($entry): ($mise_env | get $entry)}
         }
     }
   '';
+
   shellAliases = {
     cd = "z";
     cat = "bat";
@@ -37,6 +42,7 @@
     rg = "batgrep";
     man = "batman";
   };
+
   environmentVariables = {
     BAT_THEME = "base16";
   };

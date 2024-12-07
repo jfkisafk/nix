@@ -27,7 +27,7 @@
           home-manager = {
             extraSpecialArgs = { inherit inputs; };
             useGlobalPkgs = true;
-            useUserPackages = true;
+            useUserPackages = false;
             users.stelo = import ./home/home.nix;
           };
         }
