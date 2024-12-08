@@ -36,7 +36,7 @@
         # fish completes commits and branch names in a nicer way
         git => $fish_completer
         # use zoxide completions for zoxide commands
-        __zoxide_z | __zoxide_zi => $zoxide_completer
+        __zoxide_z | __zoxide_zi | z => $zoxide_completer
         _ => $carapace_completer
         } | do $in $spans
     }
@@ -48,19 +48,7 @@
           enable: true
           completer: $external_completer
         }
-      },
-      keybindings: [
-        {
-          name: reload_config
-          modifier: none
-          keycode: f5
-          mode: [emacs vi_normal vi_insert]
-          event: {
-            send: executehostcommand
-            cmd: $"source '($nu.env-path)';source '($nu.config-path)';print 'Config reloaded.\n'"
-          }
-        }
-      ]
+      }
     }
 
     # Preserve existing PATH and add our additional paths
@@ -98,6 +86,23 @@
     grep = "batgrep";
     rg = "batgrep";
     man = "batman";
+    # Git aliases
+    g = "tig --all";
+    ga = "git add";
+    gaa = "git add .";
+    gd = "git diff";
+    gcr = "git reset HEAD~1";
+    gs = "tig status";
+    com = "git commit";
+    gps = "git push";
+    gpl = "git pull --rebase";
+    gl = "tig log --show-signature";
+    gb = "git branch -vv";
+    gm = "git merge";
+    gc = "git checkout";
+    gnb = "git checkout -b";
+    gbr = "git branch -D";
+    gcl = "git checkout . and git clean -d -f -x";
   };
 
   environmentVariables = {
