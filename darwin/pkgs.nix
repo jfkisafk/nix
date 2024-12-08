@@ -47,6 +47,9 @@
     onActivation.cleanup = "zap";
     onActivation.upgrade = true;
     onActivation.autoUpdate = true;
+    brews = [
+      "pueue"
+    ];
     casks = [
       "alacritty"
       "copilot"
