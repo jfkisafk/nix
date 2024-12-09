@@ -1,13 +1,7 @@
-{ pkgs, config, ... }: {
-  imports = [
-    ../../darwin/pkgs.nix
-    ../../darwin/sys.nix
-  ];
+{ pkgs, config, inputs, ... }: {
 
   # Set the home directory for the user.
-  users.users.stelo = {
-    home = "/Users/stelo";
-  };
+  users.users.stelo.home = "/Users/stelo";
 
   # Automatically update nix-daemon and packages
   services.nix-daemon.enable = true;
@@ -15,55 +9,36 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 5;
-
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Enable sudo authentication via Touch ID.
   security.pam.enableSudoTouchIdAuth = true;
 
-  environment.shells = with pkgs; [
-    fish
-    nushell
-    zsh
-  ];
+  system = {
+    # Set Git commit hash for darwin-version.
+    configurationRevision = null;
 
-  # Set up mise tools and default shell
-  system.activationScripts = {
-    postActivation.text = ''
-      chsh -s /run/current-system/sw/bin/nu
-    '';
-    
-    installMiseTools.text = ''
-      # Set up mise tools
-      tools=(
-        "node@lts"
-        "deno@2"
-        "python@3"
-        "java@corretto-23"
-        "rust@stable"
-        "kafka@apache"
-        "go@1"
-        "terraform@1"
-        "poetry@1"
-        "kubectl@1"
-      )
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 5;
 
-      for tool in "''${tools[@]}"; do
-        if ! /run/current-system/sw/bin/mise current | grep -q "$(echo $tool | cut -d@ -f1)" || \
-           /run/current-system/sw/bin/mise outdated --quiet | grep -q "$(echo $tool | cut -d@ -f1)"; then
-          /run/current-system/sw/bin/mise use --global "$tool"
-        fi
-      done
+    startup.chime = false;
+    defaults = import ../../system/mac.nix { inherit pkgs; };
+    activationScripts = import ../../system/activation.nix { inherit pkgs; };
+  };
 
-      /run/current-system/sw/bin/mise upgrade
-      /run/current-system/sw/bin/mise prune
-    '';
+  # Packages
+  homebrew = import ../../pkgs/brew.nix { inherit pkgs; };
+  fonts = import ../../pkgs/fonts.nix { inherit pkgs; };
+
+  # Environment
+  environment = {
+    shells = with pkgs; [
+      fish
+      nushell
+      zsh
+    ];
+    systemPackages = import ../../pkgs/system.nix { inherit pkgs inputs; };
   };
 } 
