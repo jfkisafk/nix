@@ -6,7 +6,8 @@
     add_newline = true;
     command_timeout = 10000;
 
-    format = ''[  ](bg:#1d2230 fg:#a0a9cb)[](bg:#4942e4 fg:#1d2230)$directory[](fg:#4942e4 bg:#394260)$git_branch$git_status[](fg:#394260 bg:#212736)$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart[](fg:#212736 bg:#191825)$aws[](fg:#191825)$character'';
+    format = ''[  ](bg:#1d2230 fg:#a0a9cb)[](bg:#4942e4 fg:#1d2230)$directory[](fg:#4942e4 bg:#394260)$git_branch$git_status[](fg:#394260 bg:#212736)$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart[](fg:#212736 bg:#191825)$aws[](fg:#191825)
+$character'';
 
     character = {
       success_symbol = "[❯](bold fg:#769ff0)";
