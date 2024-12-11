@@ -65,6 +65,9 @@
     # Activate mise
     mise activate nu | str trim | nu -c $in
 
+    # Activate atuin
+    source ~/.cache/atuin/init.nu
+
     # Set all mise environment variables including PATH
     let mise_env = (mise env --json | from json)
     for entry in ($mise_env | columns) {
