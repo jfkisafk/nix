@@ -28,6 +28,7 @@
             extraSpecialArgs = { inherit inputs; };
             useGlobalPkgs = true;
             useUserPackages = false;
+            backupFileExtension = ".bak";
             users.stelo = import ./home/home.nix;
           };
         }

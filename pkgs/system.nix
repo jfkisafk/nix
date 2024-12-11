@@ -1,4 +1,5 @@
 { pkgs, inputs, ... }: with pkgs; [
+  atuin
   awscli2
   bat
   bat-extras.batman
@@ -15,6 +16,7 @@
   fzf
   gh
   git
+  gitleaks
   grc
   jq
   jqp

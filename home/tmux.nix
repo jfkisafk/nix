@@ -18,6 +18,7 @@
       '';
     }
     vim-tmux-navigator
+    resurrect
   ];
 
   aggressiveResize = true;
