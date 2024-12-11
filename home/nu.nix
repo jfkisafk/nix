@@ -78,6 +78,15 @@
             load-env {($entry): ($mise_env | get $entry)}
         }
     }
+
+    # Attach to existing session or create a new one
+    if (which tmux | is-empty) {
+        echo "tmux is not installed"
+    } else {
+        if ("TMUX" not-in $env) {
+            tmux new-session -A -s "main"
+        }
+    }
   '';
 
   shellAliases = {

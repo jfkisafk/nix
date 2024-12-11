@@ -1,24 +1,13 @@
-{ pkgs, ... }: let
-  tokyo-night = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "tokyo-night";
-    version = "unstable-2023-01-06";
-    src = pkgs.fetchFromGitHub {
-      owner = "janoamaral";
-      repo = "tokyo-night-tmux";
-      rev = "master";
-      sha256 = "sha256-3rMYYzzSS2jaAMLjcQoKreE0oo4VWF9dZgDtABCUOtY=";
-    };
-    extraConfig = ''
-      set -g @tokyo-night-tmux_window_id_style hsquare
-      set -g @tokyo-night-tmux_show_datetime 0
-      set -g @tokyo-night-tmux_show_git 0
-    '';
-  };
-in {
+{ pkgs, ... }: {
   enable = true;
 
   plugins = with pkgs.tmuxPlugins; [
-    tokyo-night
+    {
+      plugin = catppuccin;
+      extraConfig = ''
+        set -g @catppuccin_flavor 'mocha'
+      '';
+    }
     {
       plugin = yank;
       extraConfig = ''
@@ -68,8 +57,6 @@ in {
     # Bind clearing the screen
     bind L send-keys '^L'
 
-    run-shell ${tokyo-night}/share/tmux-plugins/tokyo-night/tokyo-night.tmux
-
     # Use Alt-arrow keys without prefix key to switch panes
     bind -n M-Left select-pane -L
     bind -n M-Right select-pane -R
@@ -84,10 +71,14 @@ in {
     bind -n M-H previous-window
     bind -n M-L next-window
 
-    run-shell ${tokyo-night}/share/tmux-plugins/tokyo-night/tokyo-night.tmux
-
-    bind '"' split-window -v -c "#{pane_current_path}"
-    bind % split-window -h -c "#{pane_current_path}"
+    # Split panes
+    bind V split-window -v -c "#{pane_current_path}"
+    bind D split-window -h -c "#{pane_current_path}"
     bind c new-window -c "#{pane_current_path}"
+    bind X kill-window
+
+    # Bind Alt-b and Alt-f to move between words
+    bind-key -n M-Left send-keys M-b
+    bind-key -n M-Right send-keys M-f
   '';
 }
