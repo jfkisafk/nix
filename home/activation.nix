@@ -28,6 +28,8 @@ in {
   btopTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
     themesDir="$HOME/.config/btop/themes"
     mkdir -p "$themesDir"
-    cp ${catppuccinThemes}/themes/catppuccin_mocha.theme "$themesDir/"
+    if [ ! -f "$themesDir/catppuccin_mocha.theme" ]; then
+      cp ${catppuccinThemes}/themes/catppuccin_mocha.theme "$themesDir/"
+    fi
   '';
 }
