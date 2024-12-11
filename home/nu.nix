@@ -79,14 +79,17 @@
         }
     }
 
-    # Attach to existing session or create a new one
-    if (which tmux | is-empty) {
-        echo "tmux is not installed"
-    } else {
-        if ("TMUX" not-in $env) {
-            tmux new-session -A -s "main"
-        }
-    }
+    # Add keybinding for tmux session
+    $env.config.keybindings = ($env.config.keybindings | default [] | append {
+      name: create_tmux_session
+      modifier: control
+      keycode: char_t
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' not-in $env) { tmux new-session -A -s 'main' } }"
+      }
+    })
   '';
 
   shellAliases = {
