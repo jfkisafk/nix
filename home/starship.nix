@@ -5,18 +5,47 @@
   settings = {
     add_newline = true;
     command_timeout = 10000;
+    palette = "catppuccin_mocha";
 
-    format = ''[  ](bg:#1d2230 fg:#a0a9cb)[](bg:#4942e4 fg:#1d2230)$directory[](fg:#4942e4 bg:#394260)$git_branch$git_status[](fg:#394260 bg:#212736)$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart[](fg:#212736 bg:#191825)$aws[](fg:#191825)
-$character'';
+    palettes.catppuccin_mocha = {
+      rosewater = "#f5e0dc";
+      flamingo = "#f2cdcd";
+      pink = "#f5c2e7";
+      mauve = "#cba6f7";
+      red = "#f38ba8";
+      maroon = "#eba0ac";
+      peach = "#fab387";
+      yellow = "#f9e2af";
+      green = "#a6e3a1";
+      teal = "#94e2d5";
+      sky = "#89dceb";
+      sapphire = "#74c7ec";
+      blue = "#89b4fa";
+      lavender = "#b4befe";
+      text = "#cdd6f4";
+      subtext1 = "#bac2de";
+      subtext0 = "#a6adc8";
+      overlay2 = "#9399b2";
+      overlay1 = "#7f849c";
+      overlay0 = "#6c7086";
+      surface2 = "#585b70";
+      surface1 = "#45475a";
+      surface0 = "#313244";
+      base = "#1e1e2e";
+      mantle = "#181825";
+      crust = "#11111b";
+    };
+
+    format = ''$directory$git_branch$git_status$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart$character'';
 
     character = {
-      success_symbol = "[❯](bold fg:#769ff0)";
-      error_symbol = "[❯](bold fg:#ff5353)";
+      success_symbol = "[ ❯](bold fg:teal)";
+      error_symbol = "[ ❯](bold fg:red)";
     };
 
     directory = {
-      style = "fg:#e3e5e5 bg:#4942e4";
-      format = "[ $path ]($style)";
+      style = "fg:blue";
+      format = "[ $path]($style)";
       truncation_length = 3;
       truncation_symbol = "";
       read_only = " 󰌾";
@@ -30,103 +59,95 @@ $character'';
 
     java = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:mauve";
+      format = "[ $symbol ($version)]($style)";
     };
 
     git_branch = {
       symbol = "";
-      style = "bg:#394260";
-      format = "[ $symbol $branch ](fg:#dde8ff bg:#394260)";
+      format = "[ $symbol $branch](fg:flamingo)";
     };
 
     git_status = {
-      style = "bg:#394260";
-      format = "[($all_status$ahead_behind )](fg:#dde8ff bg:#394260)";
+      format = "[($all_status$ahead_behind)](fg:flamingo)";
     };
 
     nodejs = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:green";
+      format = "[ $symbol ($version)]($style)";
     };
 
     rust = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:maroon";
+      format = "[ $symbol ($version)]($style)";
     };
 
     lua = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:blue";
+      format = "[ $symbol ($version)]($style)";
     };
 
     python = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:rosewater";
+      format = "[ $symbol ($version)]($style)";
     };
 
     ruby = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:sapphire";
+      format = "[ $symbol ($version)]($style)";
     };
 
     golang = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:blue";
+      format = "[ $symbol ($version)]($style)";
     };
 
     swift = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:peach";
+      format = "[ $symbol ($version)]($style)";
     };
 
     zig = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:rosewater";
+      format = "[ $symbol ($version)]($style)";
     };
 
     scala = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
-    };
-
-    aws = {
-      format = "[ $symbol$profile ]($style)";
-      style = "fg:#ff6d60 bg:#191825";
-      symbol = " ";
+      style = "fg:red";
+      format = "[ $symbol ($version)]($style)";
     };
 
     elixir = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:lavender";
+      format = "[ $symbol ($version)]($style)";
     };
 
     conda = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:green";
+      format = "[ $symbol ($version)]($style)";
     };
 
     dart = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($version) ](fg:#769ff0 bg:#212736)";
+      style = "fg:yellow";
+      format = "[ $symbol ($version)]($style)";
     };
 
     docker_context = {
       symbol = "";
-      style = "bg:#212736";
-      format = "[ $symbol ($context) ](fg:#769ff0 bg:#212736)";
+      style = "fg:blue";
+      format = "[ $symbol ($context)]($style)";
     };
   };
 } 

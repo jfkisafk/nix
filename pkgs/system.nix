@@ -8,6 +8,7 @@
   bat-extras.batdiff
   bat-extras.batpipe
   bat-extras.prettybat
+  btop
   carapace
   delta
   direnv
@@ -18,6 +19,7 @@
   git
   gitleaks
   grc
+  htop
   jq
   jqp
   inputs.home-manager.packages.${pkgs.system}.default
@@ -25,7 +27,9 @@
   mise
   neofetch
   neovim
+  nerdfetch
   nushell
+  oh-my-posh
   ollama
   openssh
   ripgrep

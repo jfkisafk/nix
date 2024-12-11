@@ -1,4 +1,11 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }: let
+  catppuccinThemes = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "btop";
+    rev = "1.0.0";
+    sha256 = "sha256-J3UezOQMDdxpflGax0rGBF/XMiKqdqZXuX4KMVGTxFk=";
+  };
+in {
   ## Generate SSH key if it doesn't exist
   generateSshKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
@@ -15,5 +22,12 @@
     if [ -d "$HOME/.ssh" ]; then
       chmod 700 "$HOME/.ssh"
     fi
+  '';
+
+  # Install btop Catppuccin Mocha theme
+  btopTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    themesDir="$HOME/.config/btop/themes"
+    mkdir -p "$themesDir"
+    cp ${catppuccinThemes}/themes/catppuccin_mocha.theme "$themesDir/"
   '';
 }

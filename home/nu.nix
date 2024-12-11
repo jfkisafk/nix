@@ -118,6 +118,8 @@
     gnb = "git checkout -b";
     gbr = "git branch -D";
     gcl = "git checkout . and git clean -d -f -x";
+
+    neo = "nerdfetch";
   };
 
   environmentVariables = {
