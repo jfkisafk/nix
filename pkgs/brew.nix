@@ -8,6 +8,8 @@
   ];
   casks = [
     "alacritty"
+    "chatgpt"
+    "claude"
     "copilot"
     "cursor"
     "dash"
@@ -29,6 +31,7 @@
     "slack"
     "sony-ps-remote-play"
     "tradingview"
+    "zen-browser"
     "zoom"
   ];
   masApps = {
@@ -41,6 +44,7 @@
     "flighty" = 1358823008;
     "gifox" = 1461845568;
     "leaf" = 576338668;
+    "perplexity" = 6714467650;
     "ray" = 6738274497;
     "tampermonkey" = 1482490089;
     "tz-converter" = 1255311569;

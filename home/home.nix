@@ -21,5 +21,6 @@
     bat = import ./bat.nix { inherit pkgs; };
     direnv = import ./direnv.nix { inherit pkgs; };
     btop = import ./btop.nix { inherit pkgs; };
+    neovim = import ./neovim.nix { inherit pkgs; };
   };
 } 

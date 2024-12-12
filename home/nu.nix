@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   enable = true;
 
   extraConfig = ''
@@ -22,15 +24,15 @@
       | where name == $spans.0
       | get -i 0.expansion
 
-    let spans = if $expanded_alias != null {
+      let spans = if $expanded_alias != null {
         $spans
         | skip 1
         | prepend ($expanded_alias | split row ' ' | take 1)
-    } else {
+      } else {
         $spans
-    }
+      }
 
-    match $spans.0 {
+      match $spans.0 {
         # carapace completions are incorrect for nu
         nu => $fish_completer
         # fish completes commits and branch names in a nicer way
@@ -38,7 +40,7 @@
         # use zoxide completions for zoxide commands
         __zoxide_z | __zoxide_zi | z => $zoxide_completer
         _ => $carapace_completer
-        } | do $in $spans
+      } | do $in $spans
     }
 
     $env.config = {
@@ -74,7 +76,7 @@
         if $entry == "PATH" {
             # Merge PATH entries, removing duplicates
             $env.PATH = (
-                ($mise_env | get PATH | split row ":" | 
+                ($mise_env | get PATH | split row ":" |
                 append $env.PATH) | uniq
             )
         } else {
@@ -96,6 +98,9 @@
   '';
 
   shellAliases = {
+    vim = "nvim";
+    vi = "nvim";
+    vimdiff = "nvim -d";
     cd = "z";
     cat = "bat";
     grep = "batgrep";
@@ -127,4 +132,4 @@
     CARAPACE_BRIDGES = "argcomplete,inshellisense,cobra,click,urfavecli,yargs,kingpin,carapace";
     CARAPACE_MATCH = 1;
   };
-} 
+}

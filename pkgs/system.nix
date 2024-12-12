@@ -12,6 +12,7 @@
   carapace
   delta
   direnv
+  docker
   fd
   fish
   fzf

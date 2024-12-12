@@ -36,7 +36,7 @@
       crust = "#11111b";
     };
 
-    format = ''$directory$git_branch$git_status$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart$character'';
+    format = ''$directory$git_branch$git_status$nodejs$rust$golang$java$python$ruby$scala$zig$docker_context$lua$elixir$swift$conda$dart$julia$crystal$character'';
 
     character = {
       success_symbol = "[ ❯](bold fg:teal)";
@@ -148,6 +148,18 @@
       symbol = "";
       style = "fg:blue";
       format = "[ $symbol ($context)]($style)";
+    };
+
+    crystal = {
+      symbol = "";
+      style = "fg:lavender";
+      format = "[ $symbol ($version)]($style)";
+    };
+
+    julia = {
+      symbol = "";
+      style = "fg:red";
+      format = "[ $symbol ($version)]($style)";
     };
   };
 } 

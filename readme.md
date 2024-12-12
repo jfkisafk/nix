@@ -52,6 +52,7 @@ It specifies the following configurations:
 - **[Starship](https://starship.rs/)**: Catppuccin themed prompt.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with catppuccin status bar and custom keybindings and plugins.
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
+- **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins. 
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.
