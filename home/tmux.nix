@@ -19,6 +19,13 @@
     }
     vim-tmux-navigator
     resurrect
+    {
+      plugin = continuum;
+      extraConfig = ''
+        set -g @resurrect-capture-pane-contents 'on'
+        set -g @continuum-restore 'on'
+      '';
+    }
   ];
 
   aggressiveResize = true;
@@ -58,24 +65,24 @@
     # Bind clearing the screen
     bind L send-keys '^L'
 
-    # Use Alt-arrow keys without prefix key to switch panes
-    bind -n M-Left select-pane -L
-    bind -n M-Right select-pane -R
-    bind -n M-Up select-pane -U
-    bind -n M-Down select-pane -D
-
     # Shift arrow to switch windows
     bind -n S-Left  previous-window
     bind -n S-Right next-window
 
-    # Shift Alt vim keys to switch windows
-    bind -n M-H previous-window
-    bind -n M-L next-window
-
     # Split panes
-    bind V split-window -v -c "#{pane_current_path}"
-    bind D split-window -h -c "#{pane_current_path}"
-    bind c new-window -c "#{pane_current_path}"
+    unbind %
+    bind | split-window -h
+
+    unbind '"'
+    bind _ split-window -v
+
+    unbind r
+    bind r source-file ~/.config/tmux/tmux.conf
+
+    unbind z
+    bind -r m resize-pane -Z
+
+    unbind &
     bind X kill-window
 
     # Bind Alt-b and Alt-f to move between words

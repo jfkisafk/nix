@@ -50,7 +50,39 @@
           enable: true
           completer: $external_completer
         }
-      }
+      },
+      keybindings: [
+        {
+          name: create_tmux_session
+          modifier: Control
+          keycode: char_t
+          mode: [emacs, vi_normal, vi_insert]
+          event: {
+            send: executehostcommand
+            cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' in $env) { tmux new-session -d -A -s 'main' } else { tmux new-session -A -s 'main' } }"
+          }
+        },
+        {
+          name: create_ollama_tmux_session
+          modifier: Control
+          keycode: char_o
+          mode: [emacs, vi_normal, vi_insert]
+          event: {
+            send: executehostcommand
+            cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' in $env) { tmux new-session -d -A -s 'ollama' } else { tmux new-session -A -s 'ollama' } }"
+          }
+        },
+        {
+          name: create_docker_tmux_session
+          modifier: control
+          keycode: char_d
+          mode: [emacs, vi_normal, vi_insert]
+          event: {
+            send: executehostcommand
+            cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' in $env) { tmux new-session -d -A -s 'docker' } else { tmux new-session -A -s 'docker' } }"
+          }
+        }
+      ]
     }
 
     # Preserve existing PATH and add our additional paths
@@ -83,18 +115,6 @@
             load-env {($entry): ($mise_env | get $entry)}
         }
     }
-
-    # Add keybinding for tmux session
-    $env.config.keybindings = ($env.config.keybindings | default [] | append {
-      name: create_tmux_session
-      modifier: control
-      keycode: char_t
-      mode: [emacs, vi_normal, vi_insert]
-      event: {
-        send: executehostcommand
-        cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' not-in $env) { tmux new-session -A -s 'main' } }"
-      }
-    })
   '';
 
   shellAliases = {
