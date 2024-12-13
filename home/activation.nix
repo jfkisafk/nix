@@ -1,9 +1,9 @@
 { pkgs, lib, ... }: let
-  catppuccinThemes = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
+  rosePineTheme = pkgs.fetchFromGitHub {
+    owner = "rose-pine";
     repo = "btop";
-    rev = "1.0.0";
-    sha256 = "sha256-J3UezOQMDdxpflGax0rGBF/XMiKqdqZXuX4KMVGTxFk=";
+    rev = "main";
+    sha256 = "sha256-sShQYfsyR5mq/e+pjeIsFzVZv3tCpQEdGC9bnTKlQ5c=";
   };
 in {
   ## Generate SSH key if it doesn't exist
@@ -24,12 +24,12 @@ in {
     fi
   '';
 
-  # Install btop Catppuccin Mocha theme
+  # Install btop Rose Pine theme
   btopTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
     themesDir="$HOME/.config/btop/themes"
     mkdir -p "$themesDir"
-    if [ ! -f "$themesDir/catppuccin_mocha.theme" ]; then
-      cp ${catppuccinThemes}/themes/catppuccin_mocha.theme "$themesDir/"
+    if [ ! -f "$themesDir/rose-pine.theme" ]; then
+      cp ${rosePineTheme}/rose-pine.theme "$themesDir/"
     fi
   '';
 }

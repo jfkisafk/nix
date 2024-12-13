@@ -8,15 +8,18 @@
         y = 10;
       };
       decorations = "Buttonless";
-      opacity = 0.9;
-      blur = true;
       option_as_alt = "Both";
       dynamic_title = true;
     };
 
     general = {
       import = [
-        "${pkgs.alacritty-theme}/tokyo_night_enhanced.toml"
+        "${pkgs.fetchFromGitHub {
+          owner = "rose-pine";
+          repo = "alacritty";
+          rev = "main";
+          sha256 = "sha256-LU8H4e5bzCevaabDgVmbWoiVq7iJ4C1VfQrWGpRwLq0=";
+        }}/dist/rose-pine.toml"
       ];
 
       live_config_reload = true;

@@ -3,12 +3,6 @@
 
   plugins = with pkgs.tmuxPlugins; [
     {
-      plugin = catppuccin;
-      extraConfig = ''
-        set -g @catppuccin_flavor "mocha"
-      '';
-    }
-    {
       plugin = yank;
       extraConfig = ''
         # keybindings
@@ -17,7 +11,16 @@
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
       '';
     }
-    vim-tmux-navigator
+    {
+      plugin = vim-tmux-navigator;
+      extraConfig = ''
+        set -g @vim_navigator_mapping_left "C-Left C-h"
+        set -g @vim_navigator_mapping_right "C-Right C-l"
+        set -g @vim_navigator_mapping_up "C-Up C-k"
+        set -g @vim_navigator_mapping_down "C-Down C-j"
+        set -g @vim_navigator_mapping_prev ""
+      '';
+    }
     resurrect
     {
       plugin = continuum;
@@ -88,5 +91,56 @@
     # Bind Alt-b and Alt-f to move between words
     bind-key -n M-Left send-keys M-b
     bind-key -n M-Right send-keys M-f
+
+    # Rose Pine theme
+    
+    thm_base="#191724";
+    thm_surface="#1f1d2e";
+    thm_overlay="#26233a";
+    thm_muted="#6e6a86";
+    thm_subtle="#908caa";
+    thm_text="#e0def4";
+    thm_love="#eb6f92";
+    thm_gold="#f6c177";
+    thm_rose="#ebbcba";
+    thm_pine="#31748f";
+    thm_foam="#9ccfd8";
+    thm_iris="#c4a7e7";
+    thm_hl_low="#21202e";
+    thm_hl_med="#403d52";
+    thm_hl_high="#524f67";
+
+    # Status bar
+    set-option -gq status on
+    set-option -gq status-style "fg=$thm_pine,bg=$thm_base"
+    set-option -gq monitor-activity on
+    set-option -gq status-left-length 200
+    set-option -gq status-right-length 200
+
+    # Theoretically messages (need to figure out color placement)
+    set-option -gq message-style "fg=$thm_muted,bg=$thm_base"
+    set-option -gq message-command-style "fg=$thm_base,bg=$thm_gold"
+
+    # Pane styling
+    set-option -gq pane-border-style "fg=$thm_hl_high"
+    set-option -gq pane-active-border-style "fg=$thm_gold"
+    set-option -gq display-panes-active-colour "$thm_text"
+    set-option -gq display-panes-colour "$thm_gold"
+
+    # Windows
+    set-window-option -gq window-status-style "fg=$thm_iris,bg=$thm_base"
+    set-window-option -gq window-status-activity-style "fg=$thm_base,bg=$thm_rose"
+    set-window-option -gq window-status-current-style "fg=$thm_gold,bg=$thm_base"
+
+    # Window appearence switcher
+    set-window-option -gq window-status-separator "   "
+    set-window-option -gq window-status-format "#[fg=$thm_iris]#I#[fg=$thm_iris,]  #[fg=$thm_iris]#W"
+    set-window-option -gq window-status-current-format "#I#[fg=$thm_gold,bg=""]  #[fg=$thm_gold,bg=""]#W"
+    set-window-option -gq clock-mode-colour "$thm_love"
+    set-window-option -gq mode-style "fg=$thm_gold"
+
+    # Status bar
+    set-option -gq status-left " #[fg=#{?client_prefix,#$thm_love,#$thm_text}] #[fg=$thm_text]#S  #[fg=$thm_subtle] #[fg=$thm_rose]#W "
+    set-option -gq status-right " #[fg=$thm_subtle]  #[fg=$thm_rose]#(echo '#{pane_current_path}' | rev | cut -d'/' -f-3 | rev) "
   '';
 }
