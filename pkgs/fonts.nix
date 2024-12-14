@@ -1,9 +1,34 @@
 { pkgs, ... }: {
   packages = with pkgs.nerd-fonts; [
+    agave
+    aurulent-sans-mono
+    bitstream-vera-sans-mono
     blex-mono
+    caskaydia-cove
+    caskaydia-mono
+    commit-mono
+    daddy-time-mono
+    dejavu-sans-mono
+    departure-mono
+    droid-sans-mono
+    envy-code-r
+    fantasque-sans-mono
+    fira-code
+    fira-mono
+    geist-mono
+    hasklug
+    intone-mono
     jetbrains-mono
+    martian-mono
     monaspace
+    monoid
+    monofur
+    recursive-mono
     roboto-mono
+    shure-tech-mono
     space-mono
+    ubuntu-mono
+    victor-mono
+    zed-mono
   ];
 }
