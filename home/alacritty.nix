@@ -26,16 +26,16 @@
     };
 
     font = let
-      blexMono = style: {
-        family = "BlexMono Nerd Font";
+      agaveMono = style: {
+        family = "Agave Nerd Font Mono";
         inherit style;
       };
     in {
-      size = 12.0;
-      normal = blexMono "Regular";
-      bold = blexMono "Bold";
-      italic = blexMono "Italic";
-      bold_italic = blexMono "Bold Italic";
+      size = 15;
+      normal = agaveMono "Regular";
+      bold = agaveMono "Bold";
+      italic = agaveMono "Italic";
+      bold_italic = agaveMono "Bold Italic";
     };
 
     mouse.hide_when_typing = true;
