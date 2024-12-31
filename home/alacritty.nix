@@ -25,18 +25,20 @@
       live_config_reload = true;
     };
 
-    font = let
-      agaveMono = style: {
-        family = "Agave Nerd Font Mono";
-        inherit style;
+    font =
+      let
+        geistMono = style: {
+          family = "GeistMono Nerd Font";
+          inherit style;
+        };
+      in
+      {
+        size = 13;
+        normal = geistMono "Regular";
+        bold = geistMono "Bold";
+        italic = geistMono "Italic";
+        bold_italic = geistMono "Bold Italic";
       };
-    in {
-      size = 15;
-      normal = agaveMono "Regular";
-      bold = agaveMono "Bold";
-      italic = agaveMono "Italic";
-      bold_italic = agaveMono "Bold Italic";
-    };
 
     mouse.hide_when_typing = true;
 

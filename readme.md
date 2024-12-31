@@ -1,17 +1,18 @@
 # Nix Darwin Config
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Features](#features)
-    - [Packages](#packages)
-    - [Hosts](#hosts)
-    - [System](#system)
-    - [Home Manager](#home-manager)
+  - [Packages](#packages)
+  - [Hosts](#hosts)
+  - [System](#system)
+  - [Home Manager](#home-manager)
 - [Installation](#installation)
 
 ## Overview
 
-This project is a Nix configuration for my Mac. It's based on the [NixOS Darwin configuration](https://mynixos.com/nix-darwin). The `darkstar` 
+This project is a Nix configuration for my Mac. It's based on the [NixOS Darwin configuration](https://mynixos.com/nix-darwin). The `darkstar`
 flake is the base MacOS configuration I use across all my Macs. This is written in a declarative and extensible way to support
 Linux machines as well.
 
@@ -31,15 +32,16 @@ Linux machines as well.
 
 - **mac.nix**: Basic configuration for macOS to automatically define NSGlobal and other settings for the system.
 - **activation.nix**: Activation scripts for the system. Currently used to:
-    - setup the default shell to [Nushell](https://www.nushell.sh/)
-    - Download language tools using [mise](https://mise.jdx.dev) available in home directory. Nushell init script will setup mise environment variables accordingly.
+  - setup the default shell to [Nushell](https://www.nushell.sh/)
+  - Download language tools using [mise](https://mise.jdx.dev) available in home directory. Nushell init script will setup mise environment variables accordingly.
 
 ### Home Manager
 
 > [!NOTE]
-> Sets up the home directory for the user (_home/home.nix_). 
+> Sets up the home directory for the user (_home/home.nix_).
 
 It specifies the following configurations:
+
 - **[Alacritty](https://github.com/alacritty/alacritty)**: Terminal emulator.
 - **[Atuin](https://atuin.sh/)**: Helps with the history of commands.
 - **AWS**: Configures AWS CLI profiles.
@@ -52,7 +54,7 @@ It specifies the following configurations:
 - **[Starship](https://starship.rs/)**: Catppuccin themed prompt.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with catppuccin status bar and custom keybindings and plugins.
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
-- **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins. 
+- **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins.
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.
@@ -71,7 +73,7 @@ sh <(curl -L https://nixos.org/nix/install)
 nix-shell -p neofetch --run neofetch
 ```
 
-Once Nix is installed, you can check out this repo and run the following command to install all the system packages, 
+Once Nix is installed, you can check out this repo and run the following command to install all the system packages,
 brew casks, fonts and AppStore apps defined in the `darkstar` flake:
 
 ```sh
@@ -87,3 +89,4 @@ you will need to run this command:
 ```sh
 home-manager switch --flake /path/to/flake.nix
 ```
+
