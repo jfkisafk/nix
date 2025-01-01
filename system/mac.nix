@@ -83,7 +83,7 @@
     tilesize = 40;
     persistent-apps = [
       "/System/Applications/Launchpad.app"
-      "/Applications/Alacritty.app"
+      "/Applications/Ghostty.app"
       "/System/Applications/Utilities/Activity Monitor.app"
       "/Applications/Bear.app"
       "/Applications/Copilot.app"
@@ -105,4 +105,4 @@
     ];
     persistent-others = [];
   };
-} 
+}

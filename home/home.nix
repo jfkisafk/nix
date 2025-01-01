@@ -14,7 +14,6 @@
     nushell = import ./nu.nix { inherit pkgs; };
     starship = import ./starship.nix { inherit pkgs; };
     git = import ./git.nix { inherit pkgs; };
-    alacritty = import ./alacritty.nix { inherit pkgs; };
     tmux = import ./tmux.nix { inherit pkgs; };
     carapace = import ./carapace.nix { inherit pkgs; };
     zoxide = import ./zoxide.nix { inherit pkgs; };

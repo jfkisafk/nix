@@ -7,7 +7,6 @@
     "pueue"
   ];
   casks = [
-    "alacritty"
     "chatgpt"
     "claude"
     "copilot"
@@ -15,6 +14,7 @@
     "dash"
     "docker"
     "dynamodb-local"
+    "ghostty"
     "hoppscotch"
     "intellij-idea"
     "karabiner-elements"

@@ -42,7 +42,6 @@ Linux machines as well.
 
 It specifies the following configurations:
 
-- **[Alacritty](https://github.com/alacritty/alacritty)**: Terminal emulator.
 - **[Atuin](https://atuin.sh/)**: Helps with the history of commands.
 - **AWS**: Configures AWS CLI profiles.
 - **[Bat](https://github.com/sharkdp/bat)**: Syntax highlighting replacement for cat.
@@ -89,4 +88,3 @@ you will need to run this command:
 ```sh
 home-manager switch --flake /path/to/flake.nix
 ```
-
