@@ -74,10 +74,10 @@
 
     # Split panes
     unbind %
-    bind | split-window -h
+    bind | split-window -h -c "#{pane_current_path}"
 
     unbind '"'
-    bind _ split-window -v
+    bind _ split-window -v -c "#{pane_current_path}"
 
     unbind r
     bind r source-file ~/.config/tmux/tmux.conf
@@ -93,7 +93,7 @@
     bind-key -n M-Right send-keys M-f
 
     # Rose Pine theme
-    
+
     thm_base="#191724";
     thm_surface="#1f1d2e";
     thm_overlay="#26233a";
@@ -142,5 +142,8 @@
     # Status bar
     set-option -gq status-left " #[fg=#{?client_prefix,#$thm_love,#$thm_text}] #[fg=$thm_text]#S  #[fg=$thm_subtle] #[fg=$thm_rose]#W "
     set-option -gq status-right " #[fg=$thm_subtle]  #[fg=$thm_rose]#(echo '#{pane_current_path}' | rev | cut -d'/' -f-3 | rev) "
+    set -Fg "status-format[1]" "#{status-format[0]}"
+    set -g "status-format[0]" ""
+    set -g status 2
   '';
 }
