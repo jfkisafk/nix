@@ -45,15 +45,16 @@ It specifies the following configurations:
 - **[Atuin](https://atuin.sh/)**: Helps with the history of commands.
 - **AWS**: Configures AWS CLI profiles.
 - **[Bat](https://github.com/sharkdp/bat)**: Syntax highlighting replacement for cat.
-- **[btop](https://github.com/aristocratos/btop)**: Resource monitor in terminal. Sets up catppuccin colorscheme.
+- **[btop](https://github.com/aristocratos/btop)**: Resource monitor in terminal. Sets up rose pine colorscheme.
 - **[Carapace](https://carapace.sh/)**: Autocomplete for the shell.
 - **[Direnv](https://direnv.net/)**: Automatically loads environment variables.
 - **Git**: Configures git with SSH signing and [delta](https://github.com/dandavison/delta) for better git diffs.
 - **[Nushell](https://www.nushell.sh/)**: Loads nushell configurations from home directory. Sources atuin, carapace, direnv, starship and tmux plugins. Plus, it loads up mise environment variables and defines extra keybindings and aliases.
-- **[Starship](https://starship.rs/)**: Catppuccin themed prompt.
-- **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with catppuccin status bar and custom keybindings and plugins.
+- **[Starship](https://starship.rs/)**: Rose pine themed prompt.
+- **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with rose pine status bar and custom keybindings and plugins.
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
 - **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins.
+- **[Yazi](https://yazi-rs.github.io)**: A simple and fast terminal UI for git. Sets up rose pine colorscheme and initial config.
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.

@@ -40,8 +40,10 @@
   stow
   tig
   tmux
+  tmuxifier
   tree
   vim
+  yazi
   yq
   zoxide
   zsh

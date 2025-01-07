@@ -5,17 +5,17 @@
       "*.jenkinsfile:Groovy"
       "*.props:Java Properties"
     ];
-    theme = "Catppuccin Mocha";
+    theme = "rose-pine";
   };
   themes = {
-   "Catppuccin Mocha" = {
+   "rose-pine" = {
      src = pkgs.fetchFromGitHub {
-       owner = "catppuccin";
-       repo = "bat";
+       owner = "rose-pine";
+       repo = "tm-theme";
        rev = "main";
-       sha256 = "sha256-x1yqPCWuoBSx/cI94eA+AWwhiSA42cLNUOFJl7qjhmw=";
+       sha256 = "sha256-bQSGi9tuv8F4gHWqoJNOm2nTRt3XiJ/90EDz9D8/iIY=";
      };
-     file = "themes/Catppuccin Mocha.tmTheme";
+     file = "dist/themes/rose-pine.tmTheme";
    };
  };
-} 
+}

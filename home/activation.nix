@@ -1,9 +1,16 @@
 { pkgs, lib, ... }: let
-  rosePineTheme = pkgs.fetchFromGitHub {
+  roseBtop = pkgs.fetchFromGitHub {
     owner = "rose-pine";
     repo = "btop";
     rev = "main";
     sha256 = "sha256-sShQYfsyR5mq/e+pjeIsFzVZv3tCpQEdGC9bnTKlQ5c=";
+  };
+
+  roseYazi = pkgs.fetchFromGitHub {
+    owner = "Msouza91";
+    repo = "rose-pine.yazi";
+    rev = "main";
+    sha256 = "sha256-Ygx3tyefGcq3Qqk/72RSJbT5K8G7wVqIk2rCI0vKkNQ=";
   };
 in {
   ## Generate SSH key if it doesn't exist
@@ -29,7 +36,16 @@ in {
     themesDir="$HOME/.config/btop/themes"
     mkdir -p "$themesDir"
     if [ ! -f "$themesDir/rose-pine.theme" ]; then
-      cp ${rosePineTheme}/rose-pine.theme "$themesDir/"
+      cp ${roseBtop}/rose-pine.theme "$themesDir/"
+    fi
+  '';
+
+  # Install yazi Rose Pine theme
+  yaziTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    themesDir="$HOME/.config/yazi"
+    mkdir -p "$themesDir"
+    if [ ! -f "$themesDir/theme.toml" ]; then
+      cp ${roseYazi}/theme.toml "$themesDir/"
     fi
   '';
 }

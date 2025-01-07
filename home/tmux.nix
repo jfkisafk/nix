@@ -110,13 +110,6 @@
     thm_hl_med="#403d52";
     thm_hl_high="#524f67";
 
-    # Status bar
-    set-option -gq status on
-    set-option -gq status-style "fg=$thm_pine,bg=$thm_base"
-    set-option -gq monitor-activity on
-    set-option -gq status-left-length 200
-    set-option -gq status-right-length 200
-
     # Theoretically messages (need to figure out color placement)
     set-option -gq message-style "fg=$thm_muted,bg=$thm_base"
     set-option -gq message-command-style "fg=$thm_base,bg=$thm_gold"
@@ -140,6 +133,11 @@
     set-window-option -gq mode-style "fg=$thm_gold"
 
     # Status bar
+    set-option -gq status on
+    set-option -gq status-style "fg=$thm_pine,bg=default"
+    set-option -gq monitor-activity on
+    set-option -gq status-left-length 200
+    set-option -gq status-right-length 200
     set-option -gq status-left " #[fg=#{?client_prefix,#$thm_love,#$thm_text}] #[fg=$thm_text]#S  #[fg=$thm_subtle] #[fg=$thm_rose]#W "
     set-option -gq status-right " #[fg=$thm_subtle]  #[fg=$thm_rose]#(echo '#{pane_current_path}' | rev | cut -d'/' -f-3 | rev) "
     set -Fg "status-format[1]" "#{status-format[0]}"
