@@ -22,9 +22,10 @@
   gitleaks
   grc
   htop
+  inputs.home-manager.packages.${pkgs.system}.default
   jq
   jqp
-  inputs.home-manager.packages.${pkgs.system}.default
+  lazygit
   mas
   mise
   neofetch

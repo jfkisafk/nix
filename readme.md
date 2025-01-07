@@ -55,6 +55,7 @@ It specifies the following configurations:
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
 - **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins.
 - **[Yazi](https://yazi-rs.github.io)**: A simple and fast terminal UI for git. Sets up rose pine colorscheme and initial config.
+- **[Lazygit](https://github.com/jesseduffield/lazygit)**: Git UI for the terminal.
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.
