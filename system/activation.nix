@@ -18,6 +18,7 @@
     "terraform@1"
     "poetry@1"
     "kubectl@1"
+    "spectral@6"
     )
 
     for tool in "''${tools[@]}"; do
