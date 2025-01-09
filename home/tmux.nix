@@ -121,14 +121,14 @@
     set-option -gq display-panes-colour "$thm_gold"
 
     # Windows
-    set-window-option -gq window-status-style "fg=$thm_iris,bg=$thm_base"
-    set-window-option -gq window-status-activity-style "fg=$thm_base,bg=$thm_rose"
-    set-window-option -gq window-status-current-style "fg=$thm_gold,bg=$thm_base"
+    set-window-option -gq window-status-style "fg=$thm_iris,bg=default"
+    set-window-option -gq window-status-activity-style "fg=$thm_gold,bg=default"
+    set-window-option -gq window-status-current-style "fg=$thm_foam,bg=default"
 
     # Window appearence switcher
-    set-window-option -gq window-status-separator "   "
-    set-window-option -gq window-status-format "#[fg=$thm_iris]#I#[fg=$thm_iris,]  #[fg=$thm_iris]#W"
-    set-window-option -gq window-status-current-format "#I#[fg=$thm_gold,bg=""]  #[fg=$thm_gold,bg=""]#W"
+    set-window-option -gq window-status-separator "   "
+    set-window-option -gq window-status-format "#[fg=$thm_iris]#I#[fg=$thm_iris]  #[fg=$thm_iris]#W"
+    set-window-option -gq window-status-current-format "#I#[fg=$thm_foam]  #[fg=$thm_foam]#W"
     set-window-option -gq clock-mode-colour "$thm_love"
     set-window-option -gq mode-style "fg=$thm_gold"
 
