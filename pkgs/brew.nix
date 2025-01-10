@@ -18,9 +18,7 @@
     "hoppscotch"
     "intellij-idea"
     "karabiner-elements"
-    "lens"
     "linear-linear"
-    "logitech-options"
     "lunar"
     "microsoft-teams"
     "monodraw"
@@ -43,6 +41,7 @@
     "bears-grat" = 6443609622;
     "flighty" = 1358823008;
     "gifox" = 1461845568;
+    "infuse" = 1136220934;
     "leaf" = 576338668;
     "perplexity" = 6714467650;
     "ray" = 6738274497;
