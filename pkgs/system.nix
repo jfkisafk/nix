@@ -21,6 +21,8 @@
   git
   gitleaks
   grc
+  grpcui
+  grpcurl
   htop
   inputs.home-manager.packages.${pkgs.system}.default
   jq
@@ -35,6 +37,9 @@
   oh-my-posh
   ollama
   openssh
+  protobuf
+  protoc-gen-go
+  protoc-gen-go-grpc
   ripgrep
   slack-cli
   starship
