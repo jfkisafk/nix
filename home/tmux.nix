@@ -29,6 +29,16 @@
         set -g @continuum-restore 'on'
       '';
     }
+    tmux-fzf
+    fzf-tmux-url
+    {
+      plugin = fuzzback;
+      extraConfig = ''
+        set -g @fuzzback-popup 1
+        set -g @fuzzback-popup-size '70%'
+        set -g @fuzzback-finder-layout 'reverse'
+      '';
+    }
   ];
 
   aggressiveResize = true;
