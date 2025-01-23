@@ -48,4 +48,41 @@ in {
       cp ${roseYazi}/theme.toml "$themesDir/"
     fi
   '';
+
+  # Set up default shell
+  postActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    current_shell=$(basename "$SHELL")
+    if [ "$current_shell" != "nu" ]; then
+      echo "Changing shell to nushell..."
+      /usr/bin/chsh -s /run/current-system/sw/bin/nu
+    else
+      echo "Shell is already nushell, no change needed."
+    fi
+  '';
+
+  # Set up mise tools
+  installMiseTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    tools=(
+    "node@lts"
+    "deno@2"
+    "bun@1"
+    "python@3"
+    "java@corretto-23"
+    "rust@stable"
+    "go@1"
+    "poetry@1"
+    "spectral@6"
+    "terraform@1"
+    )
+
+    for tool in "''${tools[@]}"; do
+    if ! /run/current-system/sw/bin/mise current | grep -q "$(echo $tool | cut -d@ -f1)" || \
+        /run/current-system/sw/bin/mise outdated --quiet | grep -q "$(echo $tool | cut -d@ -f1)"; then
+        /run/current-system/sw/bin/mise use --global "$tool"
+    fi
+    done
+
+    /run/current-system/sw/bin/mise upgrade
+    /run/current-system/sw/bin/mise prune
+  '';
 }

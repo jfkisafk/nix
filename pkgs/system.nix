@@ -27,9 +27,11 @@
   inputs.home-manager.packages.${pkgs.system}.default
   jq
   jqp
+  kubectl
   lazygit
   mas
   mise
+  mongosh
   neofetch
   neovim
   nerdfetch
@@ -37,6 +39,7 @@
   oh-my-posh
   ollama
   openssh
+  postgresql
   protobuf
   protoc-gen-go
   protoc-gen-go-grpc

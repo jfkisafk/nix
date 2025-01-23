@@ -21,6 +21,7 @@
     "linear-linear"
     "lunar"
     "microsoft-teams"
+    "mongodb-compass"
     "monodraw"
     "neat"
     "notion-calendar"

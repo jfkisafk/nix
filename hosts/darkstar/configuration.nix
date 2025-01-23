@@ -25,7 +25,6 @@
 
     startup.chime = false;
     defaults = import ../../system/mac.nix { inherit pkgs; };
-    activationScripts = import ../../system/activation.nix { inherit pkgs; };
   };
 
   # Packages
@@ -41,4 +40,4 @@
     ];
     systemPackages = import ../../pkgs/system.nix { inherit pkgs inputs; };
   };
-} 
+}

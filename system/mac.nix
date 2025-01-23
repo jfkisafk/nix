@@ -90,6 +90,7 @@
       "/Applications/Cursor.app"
       "/Applications/Gifox.localized/Gifox.app"
       "/Applications/Hoppscotch.app"
+      "/Applications/Docker.app"
       "/Applications/IntelliJ IDEA.app"
       "/Applications/Linear.app"
       "/System/Applications/Mail.app"
