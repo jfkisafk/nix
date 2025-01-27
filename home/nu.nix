@@ -128,7 +128,6 @@
   };
 
   environmentVariables = {
-    BAT_THEME = "base16";
     CARAPACE_BRIDGES = "argcomplete,inshellisense,cobra,click,urfavecli,yargs,kingpin,carapace";
     CARAPACE_MATCH = 1;
   };
