@@ -62,6 +62,8 @@ in {
 
   # Set up mise tools
   installMiseTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    /run/current-system/sw/bin/mise settings set python.compile false
+
     tools=(
     "node@lts"
     "deno@2"
