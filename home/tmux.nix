@@ -53,7 +53,6 @@
   mouse = true;
   historyLimit = 50000;
   escapeTime = 0;
-  prefix = "C-Space";
 
   extraConfig = ''
     # Increase tmux messages display duration from 750ms to 4s
