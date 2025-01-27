@@ -78,7 +78,7 @@ Once Nix is installed, you can check out this repo and run the following command
 brew casks, fonts and AppStore apps defined in the `darkstar` flake:
 
 ```sh
-nix run nix-darwin -- switch --flake .#darkstar
+nix run nix-darwin --extra-experimental-features "nix-command flakes"  -- switch --flake .#darkstar
 ```
 
 This will add `darwin-rebuild` to your path, so for further updates you can simply run:
