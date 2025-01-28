@@ -29,6 +29,7 @@
   jqp
   kubectl
   lazygit
+  lazydocker
   mas
   mise
   mongosh
