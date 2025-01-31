@@ -44,7 +44,9 @@
   protobuf
   protoc-gen-go
   protoc-gen-go-grpc
+  redis
   ripgrep
+  silver-searcher
   slack-cli
   starship
   stow
