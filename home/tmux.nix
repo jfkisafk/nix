@@ -48,11 +48,12 @@
   newSession = true;
   secureSocket = true;
   shell = "/run/current-system/sw/bin/nu";
-  shortcut = "a";
+  shortcut = "s";
   terminal = "screen-256color";
   mouse = true;
   historyLimit = 50000;
   escapeTime = 0;
+  prefix = "C-s";
 
   extraConfig = ''
     # Increase tmux messages display duration from 750ms to 4s
