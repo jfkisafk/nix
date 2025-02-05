@@ -24,9 +24,11 @@
   grpcui
   grpcurl
   htop
+  minikube
   inputs.home-manager.packages.${pkgs.system}.default
   jq
   jqp
+  kind
   kubectl
   lazygit
   lazydocker
