@@ -9,6 +9,7 @@
   bat-extras.batpipe
   bat-extras.prettybat
   btop
+  buildkit
   carapace
   delta
   direnv
@@ -62,6 +63,7 @@
   redis
   ripgrep
   silver-searcher
+  skaffold
   slack-cli
   starship
   stow
