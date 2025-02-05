@@ -17,6 +17,7 @@
   fd
   fish
   fzf
+  gcc
   gh
   git
   gitleaks
@@ -26,13 +27,25 @@
   htop
   minikube
   inputs.home-manager.packages.${pkgs.system}.default
+  istioctl
   jq
   jqp
+  k9s
   kind
+  kubectl-ktop
+  kube-prompt
+  kubecolor
   kubectl
+  kubectx
+  kubefetch
+  kubelogin
+  kubetail
+  kubernetes-helm
+  helm-dashboard
   lazygit
   lazydocker
   mas
+  minikube
   mise
   mongosh
   neofetch

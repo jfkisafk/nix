@@ -22,5 +22,6 @@
     btop = import ./btop.nix { inherit pkgs; };
     yazi = import ./yazi.nix { inherit pkgs; };
     lazygit = import ./lazygit.nix { inherit pkgs; };
+    k9s = import ./k9s.nix { inherit pkgs; };
   };
 }

@@ -12,6 +12,13 @@
     rev = "main";
     sha256 = "sha256-Ygx3tyefGcq3Qqk/72RSJbT5K8G7wVqIk2rCI0vKkNQ=";
   };
+
+  k9Repo = pkgs.fetchFromGitHub {
+    owner = "derailed";
+    repo = "k9s";
+    rev = "master";
+    sha256 = "sha256-Iy2S14pEm2jHgu8Pzscgf0JFaIRmYN55ze6kAd3n1l4=";
+  };
 in {
   ## Generate SSH key if it doesn't exist
   generateSshKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -46,6 +53,15 @@ in {
     mkdir -p "$themesDir"
     if [ ! -f "$themesDir/theme.toml" ]; then
       cp ${roseYazi}/theme.toml "$themesDir/"
+    fi
+  '';
+
+  # Adds all k9s skins
+  k9Skins = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    skinsDir="$HOME/Library/Application Support/k9s/skins"
+    mkdir -p "$skinsDir"
+    if [ ! -f "$skinsDir/rose-pine.yaml" ]; then
+      cp ${k9Repo}/skins/*.yaml "$skinsDir/"
     fi
   '';
 
