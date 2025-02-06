@@ -49,6 +49,7 @@
   minikube
   mise
   mongosh
+  moreutils
   neofetch
   neovim
   nerdfetch

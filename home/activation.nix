@@ -61,7 +61,8 @@ in {
     skinsDir="$HOME/Library/Application Support/k9s/skins"
     mkdir -p "$skinsDir"
     if [ ! -f "$skinsDir/rose-pine.yaml" ]; then
-      cp ${k9Repo}/skins/*.yaml "$skinsDir/"
+      cp ${k9Repo}/skins/*.yaml "$skinsDir/" && \
+      sed -i 's/\(background: &background\) ".*"/\1 default/' "$skinsDir/rose-pine.yaml"
     fi
   '';
 
