@@ -82,6 +82,9 @@
     bind -n S-Left  previous-window
     bind -n S-Right next-window
 
+    # Create new window with current path
+    bind c new-window -c "#{pane_current_path}"
+
     # Split panes
     unbind %
     bind | split-window -h -c "#{pane_current_path}"

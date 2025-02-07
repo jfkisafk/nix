@@ -45,6 +45,7 @@
   helm-dashboard
   lazygit
   lazydocker
+  lazysql
   mas
   minikube
   mise
@@ -61,6 +62,7 @@
   protobuf
   protoc-gen-go
   protoc-gen-go-grpc
+  rainfrog
   redis
   ripgrep
   silver-searcher
