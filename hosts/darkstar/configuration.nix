@@ -3,9 +3,6 @@
   # Set the home directory for the user.
   users.users.stelo.home = "/Users/stelo";
 
-  # Automatically update nix-daemon and packages
-  services.nix-daemon.enable = true;
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 

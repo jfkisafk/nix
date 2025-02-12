@@ -22,6 +22,7 @@
   gh
   git
   gitleaks
+  go-swagger
   grc
   grpcui
   grpcurl
@@ -67,6 +68,7 @@
   ripgrep
   silver-searcher
   skaffold
+  skim
   slack-cli
   starship
   stow
