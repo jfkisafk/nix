@@ -79,6 +79,10 @@
     # Activate mise
     mise activate nu | str trim | nu -c $in
 
+    # Activate zoxide
+    zoxide init nushell --cmd=cd | save -f ~/.cache/zoxide.nu
+    source ~/.cache/zoxide.nu
+
     # Activate atuin
     source ~/.cache/atuin/init.nu
 
@@ -105,6 +109,7 @@
     grep = "batgrep";
     rg = "batgrep";
     man = "batman";
+    cd = "z";
     # Git aliases
     g = "tig --all";
     ga = "git add";
