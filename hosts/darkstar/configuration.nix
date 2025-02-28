@@ -10,7 +10,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Enable sudo authentication via Touch ID.
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
     # Set Git commit hash for darwin-version.

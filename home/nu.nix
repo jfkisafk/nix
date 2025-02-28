@@ -38,7 +38,7 @@
         # fish completes commits and branch names in a nicer way
         git => $fish_completer
         # use zoxide completions for zoxide commands
-        __zoxide_z | __zoxide_zi | z => $zoxide_completer
+        __zoxide_z | __zoxide_zi | z | cd | cdi => $zoxide_completer
         _ => $carapace_completer
       } | do $in $spans
     }
@@ -101,7 +101,6 @@
     vim = "nvim";
     vi = "nvim";
     vimdiff = "nvim -d";
-    cd = "z";
     cat = "bat";
     grep = "batgrep";
     rg = "batgrep";
