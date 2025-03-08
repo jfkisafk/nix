@@ -74,6 +74,7 @@
       "/run/current-system/sw/bin"
       $"/etc/profiles/per-user/($env.USER)/bin"
       "/opt/homebrew/bin"
+      $"($env.HOME)/.local/share/nvim/mason/bin"
     ] | append ($env.PATH | default [] | split row (char esep)) | uniq)
 
     # Activate mise

@@ -16,6 +16,7 @@
     "dynamodb-local"
     "ghostty"
     "hoppscotch"
+    "ibkr"
     "intellij-idea"
     "karabiner-elements"
     "linear-linear"
