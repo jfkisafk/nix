@@ -88,6 +88,8 @@
     # Activate atuin
     source ~/.cache/atuin/init.nu
 
+    load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/8" }
+
     # Set all mise environment variables including PATH
     let mise_env = (mise env --json | from json)
     for entry in ($mise_env | columns) {

@@ -84,25 +84,20 @@
     persistent-apps = [
       "/System/Applications/Launchpad.app"
       "/Applications/Ghostty.app"
-      "/System/Applications/Utilities/Activity Monitor.app"
       "/Applications/Bear.app"
       "/Applications/Copilot.app"
       "/Applications/Cursor.app"
       "/Applications/Gifox.localized/Gifox.app"
       "/Applications/Hoppscotch.app"
-      "/Applications/Docker.app"
-      "/Applications/IntelliJ IDEA.app"
-      "/Applications/Linear.app"
       "/System/Applications/Mail.app"
       "/System/Applications/Messages.app"
-      "/Applications/Notion Calendar.app"
       "/System/Applications/Photos.app"
+      "/System/Applications/Music.app"
+      "/System/Applications/Passwords.app"
       "/Applications/Raycast.app"
       "/System/Cryptexes/App/System/Applications/Safari.app"
-      "/Applications/Slack.app"
       "/System/Applications/System Settings.app"
       "/Applications/TradingView.app"
-      "/System/Applications/TV.app"
     ];
     persistent-others = [];
   };

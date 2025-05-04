@@ -20,7 +20,6 @@
     "intellij-idea"
     "karabiner-elements"
     "linear-linear"
-    "lunar"
     "microsoft-teams"
     "mongodb-compass"
     "monodraw"

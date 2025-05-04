@@ -84,7 +84,7 @@ in {
     tools=(
     "node@lts"
     "deno@2"
-    "dotnet@9"
+    "dotnet@8"
     "bun@1"
     "python@3"
     "java@corretto-23"
