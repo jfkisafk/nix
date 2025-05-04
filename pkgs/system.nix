@@ -46,6 +46,7 @@
   lazygit
   lazydocker
   lazysql
+  lua51Packages.luarocks
   mas
   minikube
   mise
