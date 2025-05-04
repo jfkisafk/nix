@@ -79,8 +79,8 @@
     bind L send-keys '^L'
 
     # Shift arrow to switch windows
-    bind -n S-Left  previous-window
-    bind -n S-Right next-window
+    bind -n C-S-Left  previous-window
+    bind -n C-S-Right next-window
 
     # Create new window with current path
     bind c new-window -c "#{pane_current_path}"

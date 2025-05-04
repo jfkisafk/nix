@@ -70,6 +70,7 @@
       "/usr/bin/env"
       "/run/current-system/sw/bin"
       $"($env.HOME)/.nix-profile/bin"
+      $"($env.HOME)/.dotnet/tools"
       "/nix/var/nix/profiles/default/bin"
       "/run/current-system/sw/bin"
       $"/etc/profiles/per-user/($env.USER)/bin"

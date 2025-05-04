@@ -14,7 +14,6 @@
   delta
   direnv
   docker
-  dotnet-sdk
   fd
   fish
   fzf
