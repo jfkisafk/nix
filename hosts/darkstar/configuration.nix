@@ -20,6 +20,7 @@
     # $ darwin-rebuild changelog
     stateVersion = 5;
 
+    primaryUser = "stelo";
     startup.chime = false;
     defaults = import ../../system/mac.nix { inherit pkgs; };
   };
