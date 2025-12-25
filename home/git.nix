@@ -2,8 +2,6 @@
   enable = true;
   lfs.enable = true;
 
-  userName = "stelo";
-  userEmail = "contact@stelo.dev";
 
   ignores = [
     "*.iml"
@@ -25,11 +23,17 @@
     "annotation-generated-src"
   ];
 
-  extraConfig = {
+  settings = {
     core = {
       editor = "nvim -f";
       pager = "delta";
       whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
+    };
+
+    user = {
+      signingKey = "~/.ssh/id_ed25519.pub";
+      name = "stelo";
+      email = "contact@stelo.dev";
     };
 
     color = {
@@ -95,6 +99,5 @@
     init.defaultBranch = "main";
     commit.gpgsign = true;
     tag.gpgsign = true;
-    user.signingKey = "~/.ssh/id_ed25519.pub";
   };
 }
