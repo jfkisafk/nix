@@ -94,10 +94,8 @@
       "/System/Applications/Photos.app"
       "/System/Applications/Music.app"
       "/System/Applications/Passwords.app"
-      "/Applications/Raycast.app"
       "/System/Cryptexes/App/System/Applications/Safari.app"
       "/System/Applications/System Settings.app"
-      "/Applications/TradingView.app"
     ];
     persistent-others = [];
   };

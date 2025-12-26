@@ -16,8 +16,6 @@
     "dynamodb-local"
     "ghostty"
     "hoppscotch"
-    "ibkr"
-    "intellij-idea"
     "karabiner-elements"
     "linear-linear"
     "lunar"
@@ -29,8 +27,6 @@
     "raycast"
     "signal"
     "slack"
-    "sony-ps-remote-play"
-    "tradingview"
     "zen-browser"
     "zoom"
   ];
