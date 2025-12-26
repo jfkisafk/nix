@@ -82,7 +82,7 @@
     orientation = "bottom";
     tilesize = 40;
     persistent-apps = [
-      "/System/Applications/Launchpad.app"
+      "/System/Applications/Apps.app"
       "/Applications/Ghostty.app"
       "/Applications/Bear.app"
       "/Applications/Copilot.app"
