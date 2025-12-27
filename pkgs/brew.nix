@@ -41,7 +41,6 @@
     "gifox" = 1461845568;
     "leaf" = 576338668;
     "perplexity" = 6714467650;
-    "rakuten" = 1451893560;
     "ray" = 6738274497;
     "tampermonkey" = 1482490089;
     "tz-converter" = 1255311569;

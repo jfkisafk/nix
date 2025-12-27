@@ -25,6 +25,7 @@
   grc
   grpcui
   grpcurl
+  helix
   htop
   minikube
   inputs.home-manager.packages.${pkgs.system}.default

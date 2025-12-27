@@ -23,5 +23,6 @@
     lazygit = import ./lazygit.nix { inherit pkgs; };
     k9s = import ./k9s.nix { inherit pkgs; };
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
+    helix = import ./helix.nix { inherit pkgs; };
   };
 }
