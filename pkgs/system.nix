@@ -28,6 +28,7 @@
   helix
   htop
   minikube
+  imagemagick
   inputs.home-manager.packages.${pkgs.system}.default
   istioctl
   jq
@@ -47,8 +48,10 @@
   lazygit
   lazydocker
   lazysql
+  lua51Packages.lua
   lua51Packages.luarocks
   mas
+  mermaid-cli
   minikube
   mise
   mongosh
@@ -73,6 +76,7 @@
   slack-cli
   starship
   stow
+  tectonic
   tig
   tmux
   tmuxifier
