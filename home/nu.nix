@@ -85,9 +85,6 @@
     zoxide init nushell --cmd=cd | save -f ~/.cache/zoxide.nu
     source ~/.cache/zoxide.nu
 
-    # Activate atuin
-    source ~/.cache/atuin/init.nu
-
     load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/8" }
 
     # Set all mise environment variables including PATH
