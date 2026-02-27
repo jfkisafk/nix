@@ -29,7 +29,7 @@
   htop
   minikube
   imagemagick
-  inputs.home-manager.packages.${pkgs.system}.default
+  home-manager
   istioctl
   jq
   jqp

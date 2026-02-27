@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   enable = true;
   enableNushellIntegration = true;
+  shellWrapperName = "y";
 
   settings = {
     log = {

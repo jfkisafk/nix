@@ -93,6 +93,7 @@
 
     # Set all mise environment variables including PATH
     let mise_env = (mise env --json | from json)
+    let skip_vars = ["PATH", "TERM"]
     for entry in ($mise_env | columns) {
         if $entry == "PATH" {
             # Merge PATH entries, removing duplicates
@@ -100,7 +101,7 @@
                 ($mise_env | get PATH | split row ":" |
                 append $env.PATH) | uniq
             )
-        } else {
+        } else if $entry not-in $skip_vars {
             load-env {($entry): ($mise_env | get $entry)}
         }
     }
