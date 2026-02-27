@@ -81,6 +81,10 @@
     # Activate mise
     mise activate nu | str trim | nu -c $in
 
+    # Activate atuin
+    atuin init nu | save -f ~/.cache/atuin.nu
+    source ~/.cache/atuin.nu
+
     # Activate zoxide
     zoxide init nushell --cmd=cd | save -f ~/.cache/zoxide.nu
     source ~/.cache/zoxide.nu

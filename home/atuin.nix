@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   enable = true;
-  enableNushellIntegration = true;
+  enableNushellIntegration = false;
 
   settings = {
     enter_accept = true;
