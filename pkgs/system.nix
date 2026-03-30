@@ -14,6 +14,7 @@
   delta
   direnv
   docker
+  fastfetch
   fd
   fish
   fzf
@@ -56,9 +57,9 @@
   mise
   mongosh
   moreutils
-  neofetch
   neovim
   nerdfetch
+  netcoredbg
   nushell
   oh-my-posh
   ollama

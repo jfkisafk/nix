@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   NSGlobalDomain = {
+    AppleIconAppearanceTheme = "ClearDark";
     AppleShowAllExtensions = true;
     AppleShowAllFiles = true;
     AppleMetricUnits = 1;
