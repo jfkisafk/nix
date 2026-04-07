@@ -137,6 +137,7 @@
   };
 
   environmentVariables = {
+    MAS_NO_AUTO_INDEX = 1;
     BAT_THEME = "rose-pine";
     CARAPACE_BRIDGES = "argcomplete,inshellisense,cobra,click,urfavecli,yargs,kingpin,carapace";
     CARAPACE_MATCH = 1;

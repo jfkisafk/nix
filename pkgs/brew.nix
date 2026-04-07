@@ -9,10 +9,10 @@
   casks = [
     "chatgpt"
     "claude"
-    "copilot"
+    "copilot-money"
     "cursor"
     "dash"
-    "docker"
+    "docker-desktop"
     "dynamodb-local"
     "ghostty"
     "hoppscotch"
@@ -27,7 +27,7 @@
     "raycast"
     "signal"
     "slack"
-    "zen-browser"
+    "zen"
     "zoom"
   ];
   masApps = {
