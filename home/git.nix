@@ -82,13 +82,6 @@
       hyperlinks-file-link-format = "idea://open?file={path}&line={line}";
     };
 
-    filter.lfs = {
-      smudge = "git-lfs smudge -- %f";
-      process = "git-lfs filter-process";
-      required = true;
-      clean = "git-lfs clean -- %f";
-    };
-
     gpg.format = "ssh";
     rebase.autoStash = true;
     rerere.enabled = true;

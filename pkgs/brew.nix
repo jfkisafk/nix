@@ -17,7 +17,7 @@
     "ghostty"
     "hoppscotch"
     "karabiner-elements"
-    "linear-linear"
+    "linear"
     "lunar"
     "microsoft-teams"
     "mongodb-compass"
@@ -30,20 +30,4 @@
     "zen"
     "zoom"
   ];
-  masApps = {
-    "adblock" = 1402042596;
-    "craft" = 1487937127;
-    "dashlane" = 517914548;
-    "bear" = 1091189122;
-    "bears-cntdwn" = 1536711520;
-    "bears-grat" = 6443609622;
-    "flighty" = 1358823008;
-    "gifox" = 1461845568;
-    "leaf" = 576338668;
-    "perplexity" = 6714467650;
-    "ray" = 6738274497;
-    "tampermonkey" = 1482490089;
-    "tz-converter" = 1255311569;
-    "wallpaper" = 1552826194;
-  };
 }

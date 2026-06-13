@@ -71,7 +71,6 @@
   rainfrog
   redis
   ripgrep
-  silver-searcher
   skaffold
   skim
   slack-cli
