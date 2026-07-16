@@ -91,7 +91,6 @@ in {
     "rust@stable"
     "go@1"
     "poetry@1"
-    "spectral@6"
     "terraform@1"
     )
 

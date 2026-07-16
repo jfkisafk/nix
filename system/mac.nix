@@ -85,16 +85,9 @@
     persistent-apps = [
       "/System/Applications/Apps.app"
       "/Applications/Ghostty.app"
-      "/Applications/Bear.app"
       "/Applications/Copilot.app"
-      "/Applications/Cursor.app"
-      "/Applications/Gifox.localized/Gifox.app"
-      "/Applications/Hoppscotch.app"
       "/System/Applications/Mail.app"
       "/System/Applications/Messages.app"
-      "/System/Applications/Photos.app"
-      "/System/Applications/Music.app"
-      "/System/Applications/Passwords.app"
       "/System/Cryptexes/App/System/Applications/Safari.app"
       "/System/Applications/System Settings.app"
     ];
