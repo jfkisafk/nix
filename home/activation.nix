@@ -43,7 +43,6 @@
     "java@corretto-23"
     "rust@stable"
     "go@1"
-    "ruby@3.3"
     "spectral@6"
     "terraform@1"
     )

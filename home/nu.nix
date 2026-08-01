@@ -110,7 +110,7 @@
   shellAliases = {
     vim = "nvim";
     vi = "nvim";
-    vimdiff = "nvim -d";
+    vd = "nvim -d";
     cat = "bat";
     grep = "batgrep";
     rg = "batgrep";

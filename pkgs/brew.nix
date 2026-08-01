@@ -4,10 +4,10 @@
   onActivation.upgrade = true;
   onActivation.autoUpdate = true;
   brews = [
+    "herdr"
     "pueue"
   ];
   casks = [
-    "chatgpt"
     "claude"
     "copilot-money"
     "cursor"
@@ -15,11 +15,9 @@
     "docker-desktop"
     "dynamodb-local"
     "ghostty"
-    "hoppscotch"
     "karabiner-elements"
     "linear"
     "lunar"
-    "microsoft-teams"
     "mongodb-compass"
     "monodraw"
     "neat"
