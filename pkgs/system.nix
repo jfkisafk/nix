@@ -26,7 +26,6 @@
   grc
   grpcui
   grpcurl
-  helix
   htop
   minikube
   imagemagick

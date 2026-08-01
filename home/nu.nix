@@ -53,13 +53,13 @@
       },
       keybindings: [
         {
-          name: create_tmux_session
+          name: open_herdr_session
           modifier: Control
           keycode: char_t
           mode: [emacs, vi_normal, vi_insert]
           event: {
             send: executehostcommand
-            cmd: "if (which tmux | is-empty) { echo 'tmux is not installed' } else { if ('TMUX' in $env) { tmux new-session -d -A -s 'main' } else { tmux new-session -A -s 'main' } }"
+            cmd: "herdr"
           }
         }
       ]

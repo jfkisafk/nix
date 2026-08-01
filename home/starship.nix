@@ -11,8 +11,8 @@
       overlay = "#26233a";
       love = "#eb6f92";
       gold = "#f6c177";
-      rose = "#ebbcba";
-      pine = "#31748f";
+      rose = "#ea9a97";
+      pine = "#3e8fb0";
       foam = "#9ccfd8";
       iris = "#c4a7e7";
     };
@@ -60,7 +60,6 @@
       format = "[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) ";
       up_to_date = "[ ✓ ](bg:overlay fg:iris)";
       untracked = "[?\($count\)](bg:overlay fg:gold)";
-      stashed = "[$](bg:overlay fg:iris)";
       modified = "[!\($count\)](bg:overlay fg:gold)";
       renamed = "[»\($count\)](bg:overlay fg:iris)";
       deleted = "[✘\($count\)](style)";

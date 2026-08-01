@@ -2,7 +2,6 @@
   enable = true;
   lfs.enable = true;
 
-
   ignores = [
     "*.iml"
     ".idea/*"
@@ -15,12 +14,38 @@
     "*\${output.dir}/*"
     ".classpath"
     ".project"
+    "*.d.ts"
     ".factorypath"
     ".settings/*"
     "*.bak.ts"
     "*.bak"
+    "CLAUDE.md"
+    "GEMINI.md"
+    ".claude/*"
+    ".gemini/*"
     "jsconfig.json"
     "annotation-generated-src"
+    "node_modules"
+    ".venv"
+    ".editorconfig"
+    ".mise.toml"
+    "vendor"
+    "__pycache__"
+    "dist"
+    "out"
+    "target"
+    ".next"
+    ".nuxt"
+    ".turbo"
+    ".DS_Store"
+    "Thumbs.db"
+    ".env"
+    ".env.local"
+    ".env*.local"
+    "coverage"
+    ".cache"
+    ".terraform"
+    ".parcel-cache"
   ];
 
   settings = {
@@ -28,6 +53,7 @@
       editor = "nvim -f";
       pager = "delta";
       whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
+      excludesfile = "~/.config/git/ignore";
     };
 
     user = {
@@ -42,20 +68,6 @@
         current = "yellow bold";
         local = "green bold";
         remote = "cyan bold";
-      };
-      diff = {
-        meta = "yellow";
-        frag = "magenta bold";
-        old = "red bold";
-        new = "green bold";
-        whitespace = "red reverse";
-        commit = "yellow bold";
-      };
-      "diff-highlight" = {
-        oldNormal = "red bold";
-        oldHighlight = "red bold 52";
-        newNormal = "green bold";
-        newHighlight = "green bold 22";
       };
       status = {
         added = "green bold";
@@ -80,6 +92,10 @@
       line-numbers = true;
       hyperlinks = true;
       hyperlinks-file-link-format = "idea://open?file={path}&line={line}";
+      line-numbers-minus-style = "#eb6f92";
+      line-numbers-plus-style = "#9ccfd8";
+      line-numbers-zero-style = "#6e6a86";
+      file-style = "bold \"#9ccfd8\"";
     };
 
     gpg.format = "ssh";
@@ -92,5 +108,6 @@
     init.defaultBranch = "main";
     commit.gpgsign = true;
     tag.gpgsign = true;
+    gui.skipDiscardChangeWarning = true;
   };
 }

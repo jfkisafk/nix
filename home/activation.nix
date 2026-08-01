@@ -1,25 +1,4 @@
-{ pkgs, lib, ... }: let
-  roseBtop = pkgs.fetchFromGitHub {
-    owner = "rose-pine";
-    repo = "btop";
-    rev = "main";
-    sha256 = "sha256-sShQYfsyR5mq/e+pjeIsFzVZv3tCpQEdGC9bnTKlQ5c=";
-  };
-
-  roseYazi = pkgs.fetchFromGitHub {
-    owner = "Msouza91";
-    repo = "rose-pine.yazi";
-    rev = "main";
-    sha256 = "sha256-Ygx3tyefGcq3Qqk/72RSJbT5K8G7wVqIk2rCI0vKkNQ=";
-  };
-
-  k9Repo = pkgs.fetchFromGitHub {
-    owner = "derailed";
-    repo = "k9s";
-    rev = "master";
-    sha256 = "sha256-Iy2S14pEm2jHgu8Pzscgf0JFaIRmYN55ze6kAd3n1l4=";
-  };
-in {
+{ pkgs, lib, ... }: {
   ## Generate SSH key if it doesn't exist
   generateSshKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
@@ -35,34 +14,6 @@ in {
   sshPermissions = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -d "$HOME/.ssh" ]; then
       chmod 700 "$HOME/.ssh"
-    fi
-  '';
-
-  # Install btop Rose Pine theme
-  btopTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    themesDir="$HOME/.config/btop/themes"
-    mkdir -p "$themesDir"
-    if [ ! -f "$themesDir/rose-pine.theme" ]; then
-      cp ${roseBtop}/rose-pine.theme "$themesDir/"
-    fi
-  '';
-
-  # Install yazi Rose Pine theme
-  yaziTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    themesDir="$HOME/.config/yazi"
-    mkdir -p "$themesDir"
-    if [ ! -f "$themesDir/theme.toml" ]; then
-      cp ${roseYazi}/theme.toml "$themesDir/"
-    fi
-  '';
-
-  # Adds all k9s skins
-  k9Skins = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    skinsDir="$HOME/Library/Application Support/k9s/skins"
-    mkdir -p "$skinsDir"
-    if [ ! -f "$skinsDir/rose-pine.yaml" ]; then
-      cp ${k9Repo}/skins/*.yaml "$skinsDir/" && \
-      sed -i 's/\(background: &background\) ".*"/\1 default/' "$skinsDir/rose-pine.yaml"
     fi
   '';
 
@@ -86,11 +37,14 @@ in {
     "deno@2"
     "dotnet@8"
     "bun@1"
+    "yarn@4"
     "python@3"
+    "poetry@1"
     "java@corretto-23"
     "rust@stable"
     "go@1"
-    "poetry@1"
+    "ruby@3.3"
+    "spectral@6"
     "terraform@1"
     )
 

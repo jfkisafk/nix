@@ -115,8 +115,8 @@
     thm_text="#e0def4";
     thm_love="#eb6f92";
     thm_gold="#f6c177";
-    thm_rose="#ebbcba";
-    thm_pine="#31748f";
+    thm_rose="#ea9a97";
+    thm_pine="#3e8fb0";
     thm_foam="#9ccfd8";
     thm_iris="#c4a7e7";
     thm_hl_low="#21202e";

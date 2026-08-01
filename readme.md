@@ -33,7 +33,8 @@ Linux machines as well.
 - **mac.nix**: Basic configuration for macOS to automatically define NSGlobal and other settings for the system.
 - **activation.nix**: Activation scripts for the system. Currently used to:
   - setup the default shell to [Nushell](https://www.nushell.sh/)
-  - Download language tools using [mise](https://mise.jdx.dev) available in home directory. Nushell init script will setup mise environment variables accordingly.
+  - generate an SSH key if one does not exist
+  - install language tools via [mise](https://mise.jdx.dev): node, deno, dotnet, bun, yarn, python, poetry, java, rust, go, ruby, spectral, terraform. Nushell init script sets up mise environment variables accordingly.
 
 ### Home Manager
 
@@ -45,17 +46,18 @@ It specifies the following configurations:
 - **[Atuin](https://atuin.sh/)**: Helps with the history of commands.
 - **AWS**: Configures AWS CLI profiles.
 - **[Bat](https://github.com/sharkdp/bat)**: Syntax highlighting replacement for cat.
-- **[btop](https://github.com/aristocratos/btop)**: Resource monitor in terminal. Sets up rose pine colorscheme.
+- **[btop](https://github.com/aristocratos/btop)**: Resource monitor in terminal. Rose pine colorscheme defined inline.
 - **[Carapace](https://carapace.sh/)**: Autocomplete for the shell.
 - **[Direnv](https://direnv.net/)**: Automatically loads environment variables.
-- **Git**: Configures git with SSH signing and [delta](https://github.com/dandavison/delta) for better git diffs.
-- **[Nushell](https://www.nushell.sh/)**: Loads nushell configurations from home directory. Sources atuin, carapace, direnv, starship and tmux plugins. Plus, it loads up mise environment variables and defines extra keybindings and aliases.
+- **Git**: Configures git with SSH signing, [delta](https://github.com/dandavison/delta) for better git diffs, and a comprehensive global gitignore.
+- **[Nushell](https://www.nushell.sh/)**: Loads nushell configurations from home directory. Sources atuin, carapace, direnv, starship and tmux plugins. Loads mise environment variables and defines extra keybindings and aliases. Ctrl+T opens a [herdr](https://github.com/stelo-labs/herdr) session.
 - **[Starship](https://starship.rs/)**: Rose pine themed prompt.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with rose pine status bar and custom keybindings and plugins.
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
+- **[K9s](https://k9scli.io/)**: Kubernetes TUI with rose pine skin defined inline.
 - **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins.
-- **[Yazi](https://yazi-rs.github.io)**: A simple and fast terminal UI for git. Sets up rose pine colorscheme and initial config.
-- **[Lazygit](https://github.com/jesseduffield/lazygit)**: Git UI for the terminal.
+- **[Yazi](https://yazi-rs.github.io)**: Terminal file manager with rose pine colorscheme and a comprehensive inline icon theme.
+- **[Lazygit](https://github.com/jesseduffield/lazygit)**: Git UI for the terminal with rose pine theme.
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.
