@@ -62,7 +62,7 @@
       untracked = "[?\($count\)](bg:overlay fg:gold)";
       modified = "[!\($count\)](bg:overlay fg:gold)";
       renamed = "[»\($count\)](bg:overlay fg:iris)";
-      deleted = "[✘\($count\)](style)";
+      deleted = "[✘\($count\)]($style)";
       staged = "[++\($count\)](bg:overlay fg:gold)";
       ahead = "[⇡\(\${count}\)](bg:overlay fg:foam)";
       diverged = "⇕[\[](bg:overlay fg:iris)[⇡\(\${ahead_count}\)](bg:overlay fg:foam)[⇣\(\${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)";
@@ -167,6 +167,22 @@
       format = "[](fg:overlay)[$symbol$environment]($style)[](fg:overlay) ";
       disabled = false;
       symbol = "🅒 ";
+    };
+
+    profiles = {
+      "claude-code" = "$claude_model$claude_cost$claude_context";
+    };
+
+    claude_model = {
+      style = "bold iris";
+      symbol = "󰧱 ";
+    };
+
+    claude_cost = {
+      symbol = "󰴈 ";
+      display = [
+        { threshold = 0; style = "bold rose"; }
+      ];
     };
   };
 }
