@@ -27,6 +27,7 @@
     "raycast"
     "signal"
     "slack"
+    "tickernotch"
     "zen"
     "zoom"
   ];

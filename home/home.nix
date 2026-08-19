@@ -55,5 +55,6 @@
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
     claude-code = import ./claude.nix { inherit pkgs; };
     antigravity-cli = import ./antigravity.nix { inherit pkgs; };
+    ghostty = import ./ghostty.nix { inherit pkgs; };
   };
 }
