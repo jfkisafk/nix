@@ -8,6 +8,7 @@
     "pueue"
   ];
   casks = [
+    "antigravity-cli"
     "claude"
     "copilot-money"
     "cursor"
@@ -15,6 +16,7 @@
     "docker-desktop"
     "dynamodb-local"
     "ghostty"
+    "helium-browser"
     "karabiner-elements"
     "linear"
     "lunar"

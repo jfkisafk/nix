@@ -5,6 +5,36 @@
     homeDirectory = "/Users/stelo";
     stateVersion = "25.05";
     activation = import ./activation.nix { inherit pkgs lib; };
+    file = {
+      ".claude/themes/rose-pine.json".text = builtins.toJSON {
+        name = "Rose Pine";
+        base = "dark-ansi";
+        overrides = {
+          claude = "#c4a7e7";
+          error = "#eb6f92";
+          success = "#9ccfd8";
+          warning = "#f6c177";
+          diffAdded = "#3e8fb0";
+          diffRemoved = "#eb6f92";
+          promptBorder = "#31748f";
+          planMode = "#ea9a97";
+          text = "#e0def4";
+          inactive = "#6e6a86";
+          userMessageBackground = "#393552";
+          claudeShimmer = "#907aa9";
+          inactiveShimmer = "#908caa";
+          permissionShimmer = "#b4637a";
+          warningShimmer = "#ea9d34";
+          promptBorderShimmer = "#3e8fb0";
+          fastModeShimmer = "#d7827e";
+          autoAcceptShimmer = "#56949f";
+        };
+      };
+      ".gemini/antigravity-cli/statusline.nu" = {
+        source = ./statusline.nu;
+        executable = true;
+      };
+    };
   };
 
   programs = {
@@ -23,5 +53,7 @@
     lazygit = import ./lazygit.nix { inherit pkgs; };
     k9s = import ./k9s.nix { inherit pkgs; };
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
+    claude-code = import ./claude.nix { inherit pkgs; };
+    antigravity-cli = import ./antigravity.nix { inherit pkgs; };
   };
 }
