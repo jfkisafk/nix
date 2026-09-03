@@ -79,10 +79,11 @@
     ] | append ($env.PATH | default [] | split row (char esep)) | uniq)
 
     # Activate mise
-    mise activate nu | str trim | nu -c $in
+    mise activate nu | save -f ~/.cache/mise.nu
+    source ~/.cache/mise.nu
 
     # Activate atuin
-    atuin init nu | save -f ~/.cache/atuin.nu
+    atuin init nu | str replace --regex 'name:\s*atuin\s*\n\s*modifier:\s*none' "name: atuin_up\n            modifier: none" | save -f ~/.cache/atuin.nu
     source ~/.cache/atuin.nu
 
     # Activate zoxide
