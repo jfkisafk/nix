@@ -5,11 +5,13 @@
   onActivation.autoUpdate = true;
   brews = [
     "herdr"
+    "opencode"
     "pueue"
   ];
   casks = [
     "antigravity-cli"
     "claude"
+    "claude-code"
     "copilot-money"
     "cursor"
     "dash"

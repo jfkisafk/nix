@@ -31,7 +31,11 @@
         };
       };
       ".gemini/antigravity-cli/statusline.nu" = {
-        source = ./statusline.nu;
+        source = ./agy-statusline.nu;
+        executable = true;
+      };
+      ".claude/claude-statusline.nu" = {
+        source = ./claude-statusline.nu;
         executable = true;
       };
     };
@@ -54,6 +58,7 @@
     k9s = import ./k9s.nix { inherit pkgs; };
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
     claude-code = import ./claude.nix { inherit pkgs; };
+    opencode = import ./opencode.nix { inherit pkgs; };
     antigravity-cli = import ./antigravity.nix { inherit pkgs; };
     ghostty = import ./ghostty.nix { inherit pkgs; };
   };

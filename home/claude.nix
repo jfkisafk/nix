@@ -131,14 +131,21 @@
 
     statusLine = {
       type = "command";
-      command = "starship statusline claude-code";
+      command = "~/.claude/claude-statusline.nu";
     };
 
     enabledPlugins = {
       "code-review@claude-plugins-official" = true;
       "code-simplifier@claude-plugins-official" = true;
+      "csharp-lsp@claude-plugins-official" = true;
       "github@claude-plugins-official" = true;
+      "gopls-lsp@claude-plugins-official" = true;
+      "jdtls-lsp@claude-plugins-official" = true;
+      "lua-lsp@claude-plugins-official" = true;
+      "pyright-lsp@claude-plugins-official" = true;
+      "rust-analyzer-lsp@claude-plugins-official" = true;
       "security-guidance@claude-plugins-official" = true;
+      "typescript-lsp@claude-plugins-official" = true;
     };
 
     syntaxHighlightingDisabled = false;

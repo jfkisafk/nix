@@ -90,7 +90,7 @@
     zoxide init nushell --cmd=cd | save -f ~/.cache/zoxide.nu
     source ~/.cache/zoxide.nu
 
-    load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/8" }
+    load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/10" }
 
     # Set all mise environment variables including PATH
     let mise_env = (mise env --json | from json)

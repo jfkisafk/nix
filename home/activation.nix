@@ -30,17 +30,20 @@
 
   # Set up mise tools
   installMiseTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    /run/current-system/sw/bin/mise settings set python.compile false
+    (
+    export PATH="/run/current-system/sw/bin:/usr/bin:/bin:$PATH"
+
+    mise settings set python.compile false
 
     tools=(
     "node@lts"
     "deno@2"
-    "dotnet@8"
+    "dotnet@10"
     "bun@1"
     "yarn@4"
     "python@3"
     "poetry@1"
-    "java@corretto-23"
+    "java@corretto-26"
     "rust@stable"
     "go@1"
     "spectral@6"
@@ -56,5 +59,6 @@
 
     /run/current-system/sw/bin/mise upgrade
     /run/current-system/sw/bin/mise prune
+    )
   '';
 }
