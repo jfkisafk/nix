@@ -53,11 +53,14 @@ It specifies the following configurations:
 - **[Nushell](https://www.nushell.sh/)**: Loads nushell configurations from home directory. Sources atuin, carapace, direnv, starship and tmux plugins. Loads mise environment variables and defines extra keybindings and aliases. Ctrl+T opens a [herdr](https://github.com/stelo-labs/herdr) session.
 - **[Starship](https://starship.rs/)**: Rose pine themed prompt.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with rose pine status bar and custom keybindings and plugins.
-- **[Zoxide](https://github.com/ajeetdsouza/zoxide)**: Faster cd command that remembers history.
 - **[K9s](https://k9scli.io/)**: Kubernetes TUI with rose pine skin defined inline.
-- **[Neovim](https://neovim.io)**: Neovim configuration using lazyvim to setup plugins.
 - **[Yazi](https://yazi-rs.github.io)**: Terminal file manager with rose pine colorscheme and a comprehensive inline icon theme.
 - **[Lazygit](https://github.com/jesseduffield/lazygit)**: Git UI for the terminal with rose pine theme.
+- **[Ripgrep](https://github.com/BurntSushi/ripgrep)**: Faster grep replacement, configured for smart-case and hidden files.
+- **[Claude Code](https://claude.com/product/claude-code)**: Anthropic's CLI agent, configured with rose pine theme, engineering/technical-writing rules, `gh` read-only permissions, and Atuin history hooks.
+- **[opencode](https://opencode.ai)**: Terminal coding agent, configured with the same rules and `gh` permissions as Claude Code, plus a matching rose pine theme.
+- **[Antigravity](https://antigravity.google)**: Google's CLI agent, configured with the same engineering/technical-writing rules and `gh`/git read-only permissions.
+- **[Ghostty](https://ghostty.org)**: GPU-accelerated terminal emulator, themed rose pine (light/dark), JetbrainsMono Nerd Font.
 
 > [!NOTE]
 > Home manager also uses activation scripts to setup ssh keys for git signing and authentication.
