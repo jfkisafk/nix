@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }: {
+{ pkgs, config, inputs, lib, ... }: {
 
   # Set the home directory for the user.
   users.users.stelo.home = "/Users/stelo";
@@ -11,6 +11,10 @@
 
   # Enable sudo authentication via Touch ID.
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  # Run tailscaled as a persistent launchd daemon.
+  services.tailscale.enable = true;
+  environment.etc."resolver/ts.net".enable = lib.mkForce false;
 
   system = {
     # Set Git commit hash for darwin-version.

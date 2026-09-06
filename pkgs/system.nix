@@ -75,6 +75,7 @@
   slack-cli
   starship
   stow
+  tailscale
   tectonic
   tig
   tmux

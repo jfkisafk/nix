@@ -15,7 +15,7 @@
     "copilot-money"
     "cursor"
     "dash"
-    "docker-desktop"
+    "orbstack"
     "dynamodb-local"
     "ghostty"
     "helium-browser"
