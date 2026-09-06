@@ -5,7 +5,7 @@
   settings = {
     enter_accept = true;
     sync.records = true;
-    sync_address = "http://darkstar.dohne-hue.ts.net:30530";
+    sync_address = "https://darkstar.dohne-hue.ts.net/atuin/sync";
     style = "compact";
     secrets_filter = true;
     ignored_commands = [
