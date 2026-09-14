@@ -148,11 +148,17 @@
       "typescript-lsp@claude-plugins-official" = true;
     };
 
+    voiceEnabled = true;
+    voice = {
+      enabled = true;
+      mode = "hold";
+    };
+
     syntaxHighlightingDisabled = false;
     effortLevel = "high";
     theme = "custom:rose-pine";
     editorMode = "vim";
     showTurnDuration = false;
-    model = "sonnet";
+    model = "opus";
   };
 }

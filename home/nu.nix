@@ -135,6 +135,7 @@
     gcl = "git checkout . and git clean -d -f -x";
 
     neo = "nerdfetch";
+    speed = "networkQuality -p";
   };
 
   environmentVariables = {
