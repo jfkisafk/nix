@@ -32,7 +32,7 @@ No tests, no linter. CI is `.github/workflows/gitleaks.yml` (secret scan) only.
 
 `home/home.nix` holds `home.file` (static dotfiles: rose-pine Claude theme, `statusline.nu`) and a `programs` block of one-line imports.
 
-Each `home/<file>.nix` is `{ pkgs, ... }: { enable = true; ... }` — the attrset *is* the value of `programs.<name>`. The attr name is not always the filename: `claude-code`→`claude.nix`, `awscli`→`aws.nix`, `nushell`→`nu.nix`, `antigravity-cli`→`antigravity.nix`.
+Each `home/<file>.nix` is `{ pkgs, ... }: { enable = true; ... }` — the attrset *is* the value of `programs.<name>`. The attr name is not always the filename: `claude-code`→`claude.nix`, `awscli`→`aws.nix`, `nushell`→`nu.nix`.
 
 Add a program: write `home/<file>.nix`, then add `<name> = import ./<file>.nix { inherit pkgs; };` to `programs` in `home/home.nix`. Copy `home/bat.nix` (minimal) or `home/git.nix` (full) for shape.
 

@@ -51,10 +51,6 @@
         SyntaxOperator = "#e0def4"
         SyntaxComment = "#6e6a86"
       '';
-      ".gemini/antigravity-cli/statusline.nu" = {
-        source = ./agy-statusline.nu;
-        executable = true;
-      };
       ".claude/claude-statusline.nu" = {
         source = ./claude-statusline.nu;
         executable = true;
@@ -80,7 +76,6 @@
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
     claude-code = import ./claude.nix { inherit pkgs; };
     opencode = import ./opencode.nix { inherit pkgs; };
-    antigravity-cli = import ./antigravity.nix { inherit pkgs; };
     ghostty = import ./ghostty.nix { inherit pkgs; };
   };
 }

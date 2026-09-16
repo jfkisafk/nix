@@ -3,10 +3,10 @@
 # Flat bold-color style, matching claude_model/claude_cost's default rendering
 # (no overlay pill background - those modules don't use $style pill decoration)
 def color_for [remaining: number] {
-  if $remaining <= 10 {
+  if $remaining <= 15 {
     "\u{1b}[1;38;2;235;111;146m" # love: critical
-  } else if $remaining <= 30 {
-    "\u{1b}[1;38;2;246;193;119m" # gold: warn
+  } else if $remaining <= 40 {
+    "\u{1b}[1;38;2;234;154;151m" # rose: warn
   } else {
     "\u{1b}[1;38;2;156;207;216m" # foam: ok
   }

@@ -9,7 +9,6 @@
     "pueue"
   ];
   casks = [
-    "antigravity-cli"
     "claude"
     "claude-code"
     "copilot-money"

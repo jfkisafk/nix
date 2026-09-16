@@ -59,7 +59,6 @@ It specifies the following configurations:
 - **[Ripgrep](https://github.com/BurntSushi/ripgrep)**: Faster grep replacement, configured for smart-case and hidden files.
 - **[Claude Code](https://claude.com/product/claude-code)**: Anthropic's CLI agent, configured with rose pine theme, engineering/technical-writing rules, `gh` read-only permissions, and Atuin history hooks.
 - **[opencode](https://opencode.ai)**: Terminal coding agent, configured with the same rules and `gh` permissions as Claude Code, plus a matching rose pine theme.
-- **[Antigravity](https://antigravity.google)**: Google's CLI agent, configured with the same engineering/technical-writing rules and `gh`/git read-only permissions.
 - **[Ghostty](https://ghostty.org)**: GPU-accelerated terminal emulator, themed rose pine (light/dark), JetbrainsMono Nerd Font.
 
 > [!NOTE]

@@ -159,6 +159,6 @@
     theme = "custom:rose-pine";
     editorMode = "vim";
     showTurnDuration = false;
-    model = "opus";
+    model = "sonnet";
   };
 }
