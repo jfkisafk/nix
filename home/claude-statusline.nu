@@ -12,14 +12,22 @@ def color_for [remaining: number] {
   }
 }
 
-def rate_limit_segment [pct: any, label: string] {
-  if ($pct | is-empty) {
-    ""
-  } else {
-    let remaining = (100 - $pct | math round)
-    let reset = "\u{1b}[0m"
-    $" (color_for $remaining)($label) ($remaining)%($reset)"
-  }
+def pine [] { "\u{1b}[1;38;2;62;143;176m" } # pine: absolute reset time
+
+def format_reset [resets_at: any, date_format: string] {
+  if ($resets_at | is-empty) { return "" }
+
+  let rounded_hour = (($resets_at | into int) / 3600.0 | math round) * 3600
+  let dt = ($rounded_hour * 1_000_000_000 | into datetime | date to-timezone local)
+  $" (pine)\(($dt | format date $date_format)\)"
+}
+
+def rate_limit_segment [pct: any, label: string, resets_at: any, date_format: string] {
+  if ($pct | is-empty) { return "" }
+
+  let remaining = (100 - $pct | math round)
+  let reset = "\u{1b}[0m"
+  $" (color_for $remaining)($label) ($remaining)%(format_reset $resets_at $date_format)($reset)"
 }
 
 def main [] {
@@ -27,10 +35,10 @@ def main [] {
   let input = (try { $raw | from json } catch { {} })
   let base = ($raw | starship statusline claude-code | str trim)
 
-  let five_hour = ($input | get -o rate_limits.five_hour.used_percentage)
-  let seven_day = ($input | get -o rate_limits.seven_day.used_percentage)
+  let five_hour = ($input | get -o rate_limits.five_hour)
+  let seven_day = ($input | get -o rate_limits.seven_day)
 
-  let extra = (rate_limit_segment $five_hour "5h") + (rate_limit_segment $seven_day "7d")
+  let extra = (rate_limit_segment ($five_hour | get -o used_percentage) "5h" ($five_hour | get -o resets_at) "%-I%P") + (rate_limit_segment ($seven_day | get -o used_percentage) "7d" ($seven_day | get -o resets_at) "%a")
 
   print $"($base)($extra)"
 }
