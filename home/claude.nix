@@ -216,11 +216,6 @@
       "typescript-lsp@claude-plugins-official" = true;
     };
 
-    voice = {
-      enabled = true;
-      mode = "hold";
-    };
-
     syntaxHighlightingDisabled = false;
     effortLevel = "high";
     theme = "custom:rose-pine";

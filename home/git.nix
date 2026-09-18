@@ -29,6 +29,8 @@
     ".venv"
     ".editorconfig"
     ".mise.toml"
+    "mise.toml"
+    "docker-compose.override.yml"
     "vendor"
     "__pycache__"
     "dist"
