@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }: with pkgs; [
   atuin
+  azure-cli
   awscli2
   bat
   bat-extras.batman
@@ -27,12 +28,12 @@
   grpcui
   grpcurl
   htop
-  minikube
   imagemagick
   home-manager
   istioctl
   jq
   jqp
+  jwt-cli
   k9s
   kind
   kubectl-ktop
@@ -42,9 +43,8 @@
   kubectx
   kubefetch
   kubelogin
-  kubetail
   kubernetes-helm
-  helm-dashboard
+  kubetail
   lazygit
   lazydocker
   lazysql
@@ -63,6 +63,7 @@
   oh-my-posh
   ollama
   openssh
+  (oxker.overrideAttrs { doCheck = false; })
   postgresql
   protobuf
   protoc-gen-go
@@ -82,9 +83,11 @@
   tmux
   tmuxifier
   tree
+  uv
   valkey
   vim
   yazi
+  yj
   yq
   zoxide
   zsh
