@@ -73,6 +73,7 @@
   skaffold
   skim
   slack-cli
+  sqlite
   starship
   stow
   tailscale
@@ -81,6 +82,7 @@
   tmux
   tmuxifier
   tree
+  valkey
   vim
   yazi
   yq

@@ -18,7 +18,7 @@
     };
 
     format = ''$username$directory$git_branch$git_status$character'';
-    right_format = ''$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python$time'';
+    right_format = ''$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python''${custom.llm_cost}$time'';
 
     character = {
       format = "$symbol  ";
@@ -167,6 +167,24 @@
       format = "[](fg:overlay)[$symbol$environment]($style)[](fg:overlay) ";
       disabled = false;
       symbol = "🅒 ";
+    };
+
+    custom.llm_cost = {
+      command = ''
+        let db = $"($env.HOME)/.claude/cost.db"
+        let month = (date now | format date '%Y-%m')
+        let val = if ($db | path exists) {
+          (try { ^sqlite3 $db $"SELECT COALESCE\(SUM\(cost_usd\), 0\) FROM session_cost WHERE month = '($month)';" | str trim } catch { "" })
+        } else { "0" }
+        let amount = if ($val | is-empty) { 0.0 } else { (try { $val | into float } catch { null }) }
+        if $amount == null { exit 1 }
+        print ("$" + ($amount | into string -d 2))
+      '';
+      shell = ["nu" "-c"];
+      style = "bg:overlay fg:love";
+      format = "[](fg:overlay)[ ⚡$output]($style)[](fg:overlay)";
+      when = "true";
+      disabled = false;
     };
 
     profiles = {
