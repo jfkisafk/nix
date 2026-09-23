@@ -9,27 +9,20 @@
     "pueue"
   ];
   casks = [
-    "claude"
-    "claude-code"
+    "claude-code@latest"
     "copilot-money"
     "cursor"
-    "dash"
     "orbstack"
-    "dynamodb-local"
     "ghostty"
     "helium-browser"
     "karabiner-elements"
     "linear"
     "lunar"
-    "mongodb-compass"
     "monodraw"
     "neat"
-    "notion-calendar"
     "raycast"
     "signal"
-    "slack"
     "tickernotch"
-    "zen"
     "zoom"
   ];
 }
