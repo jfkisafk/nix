@@ -14,8 +14,11 @@ def color_for [remaining: number] {
 
 def pine [] { "\u{1b}[1;38;2;62;143;176m" } # pine: absolute reset time
 
-# Upsert this session's latest cumulative cost (idempotent; no double-counting on repeat renders).
-# MTD is SUM(cost_usd) at read time in home/starship.nix -> custom.llm_cost. Keep both paths in sync.
+# `cost.total_cost_usd` is a lifetime running total, not a per-event charge, so we track the last
+# total seen per session (session_state) and add only the delta to the current month
+# (monthly_cost, read directly by starship.nix -> custom.llm_cost — keep in sync). A reading below
+# the stored baseline means the session restarted (`--resume`/`--continue`), so it's counted in
+# full rather than clamped to 0. One BEGIN IMMEDIATE avoids racing concurrent writers.
 def update_cost_mtd [input: record] {
   let cost_usd = ($input | get -o cost.total_cost_usd)
   let session_id = ($input | get -o session_id)
@@ -24,20 +27,30 @@ def update_cost_mtd [input: record] {
   let db = $"($env.HOME)/.claude/cost.db"
   mkdir ($db | path dirname)
   let sid = ($session_id | str replace --all "'" "''")
-  let month = (date now | format date '%Y-%m') # fixed at first write; a session spanning a month boundary stays in its starting month
+  let month = (date now | format date '%Y-%m')
+  let new_cost = ($cost_usd | into float)
 
-  ^sqlite3 $db $"CREATE TABLE IF NOT EXISTS session_cost \(session_id TEXT PRIMARY KEY, month TEXT NOT NULL, cost_usd REAL NOT NULL\);
-INSERT INTO session_cost VALUES\('($sid)', '($month)', ($cost_usd | into float)\) ON CONFLICT\(session_id\) DO UPDATE SET cost_usd = excluded.cost_usd;"
+  ^sqlite3 $db $"PRAGMA busy_timeout = 5000;
+BEGIN IMMEDIATE;
+CREATE TABLE IF NOT EXISTS session_state \(session_id TEXT PRIMARY KEY, last_cost_usd REAL NOT NULL, last_month TEXT NOT NULL\);
+CREATE TABLE IF NOT EXISTS monthly_cost \(month TEXT PRIMARY KEY, cost_usd REAL NOT NULL\);
+INSERT INTO session_state \(session_id, last_cost_usd, last_month\) VALUES\('($sid)', 0, '($month)'\)
+ON CONFLICT\(session_id\) DO NOTHING;
+INSERT INTO monthly_cost \(month, cost_usd\)
+  SELECT '($month)', CASE WHEN ($new_cost) < last_cost_usd THEN ($new_cost) ELSE ($new_cost) - last_cost_usd END FROM session_state WHERE session_id = '($sid)'
+ON CONFLICT\(month\) DO UPDATE SET cost_usd = cost_usd + excluded.cost_usd;
+UPDATE session_state SET last_cost_usd = ($new_cost), last_month = '($month)' WHERE session_id = '($sid)';
+DELETE FROM monthly_cost WHERE month < strftime\('%Y-%m', 'now', '-12 months'\);
+DELETE FROM session_state WHERE last_month < strftime\('%Y-%m', 'now', '-12 months'\);
+COMMIT;" o+e> /dev/null
   true
 }
 
 def cache_icon [status: any] {
-  if $status == null {
-    ""
-  } else if $status {
-    $" (color_for 100)󰹍\u{1b}[0m"
+  if $status == false {
+    $" (color_for 0)󰀩\u{1b}[0m"
   } else {
-    $" (color_for 0)󰹍\u{1b}[0m"
+    ""
   }
 }
 
