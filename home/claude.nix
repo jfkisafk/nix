@@ -27,6 +27,20 @@
       - Show examples, commands, expected output
       - Imperative voice: "Run `x` to…"
     '';
+
+    shared-memory = ''
+      # Shared Memory
+
+      Agents on all of the user's machines share memory via the `memory` MCP server.
+
+      - Before your first other tool call in a task, call `mcp__plugin_hm_memory__qdrant-find` with the repo name and topic. Do this without asking.
+      - Before finishing, if you learned something another agent couldn't cheaply rediscover, call `mcp__plugin_hm_memory__qdrant-store`, following its tool description.
+    '';
+  };
+
+  mcpServers.memory = {
+    type = "http";
+    url = "https://darkstar.dohne-hue.ts.net/memory/mcp/";
   };
 
   agents = {
@@ -115,6 +129,8 @@
         "Bash(gh search:*)"
         "Bash(gh api:*)"
         "Bash(poetry run pytest:*)"
+        "mcp__plugin_hm_memory__qdrant-find"
+        "mcp__plugin_hm_memory__qdrant-store"
       ];
       deny = [
         "EnterPlanMode"
@@ -183,14 +199,6 @@
               type = "command";
               command = "bash '/Users/stelo/.claude/hooks/herdr-agent-state.sh' session";
               timeout = 10;
-            }
-          ];
-        }
-        {
-          hooks = [
-            {
-              type = "command";
-              command = "printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"MCP SERVERS ARE DORMANT BY DEFAULT: Do NOT call any mcp__azure__*, mcp__github__*, or mcp__atlassian__* tools unless the user explicitly asks to use them or names a specific service (Azure, GitHub, Jira, Confluence, etc.). Invoking MCP tools unprompted wastes tokens. Wait for clear user intent before using any MCP tool.\"}}'";
             }
           ];
         }

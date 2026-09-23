@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 `nix-darwin` + `home-manager` flake for one Mac: host `darkstar`, user `stelo`, `aarch64-darwin`. Rose-pine themed; language runtimes come from `mise`, not nixpkgs.
 
