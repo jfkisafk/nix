@@ -187,7 +187,7 @@
       '';
       shell = ["nu" "-c"];
       style = "bg:overlay fg:love";
-      format = "[](fg:overlay)[ ⚡$output]($style)[](fg:overlay)";
+      format = "[](fg:overlay)[⚡$output]($style)[](fg:overlay) ";
       when = "true";
       disabled = false;
     };
