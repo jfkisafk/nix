@@ -1,24 +1,21 @@
 #!/usr/bin/env -S nu --stdin
 
-# Flat bold-color style, matching claude_model/claude_cost's default rendering
-# (no overlay pill background - those modules don't use $style pill decoration)
+# Bold flat colors to match starship's claude_model/claude_cost modules.
 def color_for [remaining: number] {
   if $remaining <= 15 {
-    "\u{1b}[1;38;2;235;111;146m" # love: critical
+    "\u{1b}[1;38;2;235;111;146m" # love
   } else if $remaining <= 40 {
-    "\u{1b}[1;38;2;234;154;151m" # rose: warn
+    "\u{1b}[1;38;2;234;154;151m" # rose
   } else {
-    "\u{1b}[1;38;2;156;207;216m" # foam: ok
+    "\u{1b}[1;38;2;156;207;216m" # foam
   }
 }
 
-def pine [] { "\u{1b}[1;38;2;62;143;176m" } # pine: absolute reset time
+def pine [] { "\u{1b}[1;38;2;62;143;176m" } # pine
 
-# `cost.total_cost_usd` is a lifetime running total, not a per-event charge, so we track the last
-# total seen per session (session_state) and add only the delta to the current month
-# (monthly_cost, read directly by starship.nix -> custom.llm_cost — keep in sync). A reading below
-# the stored baseline means the session restarted (`--resume`/`--continue`), so it's counted in
-# full rather than clamped to 0. One BEGIN IMMEDIATE avoids racing concurrent writers.
+# total_cost_usd is a running per-session total, so only the delta since the last reading is added.
+# A reading below the baseline means a resumed session, which is counted in full.
+# starship.nix (custom.llm_cost) reads monthly_cost directly; keep the schema in sync.
 def update_cost_mtd [input: record] {
   let cost_usd = ($input | get -o cost.total_cost_usd)
   let session_id = ($input | get -o session_id)

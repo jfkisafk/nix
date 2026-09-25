@@ -1,3 +1,4 @@
+# programs.claude-code: global rules, agents, MCP servers, and settings.json; the binary comes from brew (package = null).
 { ... }: {
   enable = true;
   package = null;
@@ -6,34 +7,38 @@
     engineering = ''
       # Engineering Standards
 
-      - Staff/Principal altitude: blast radius, downstream consumers, deployment
-      - Correctness over cleverness; simpler path wins
-      - Surface assumptions explicitly; if uncertain or ambiguous, ask before coding
+      - Consider blast radius, downstream consumers, and deployment
+      - Correctness over cleverness; simple and readable wins until profiling proves a bottleneck
+      - Surface assumptions explicitly; ask only when the answer changes the implementation, otherwise state the assumption and proceed
       - Surgical: every changed line traces to the request
-      - Define verifiable success criteria before implementing
+      - For non-trivial changes, define verifiable success criteria before implementing
       - Flag: N+1 queries, blocking calls in hot paths, missing indexes, unbounded result sets
+      - Keep code flat: guard clauses and early returns over nested conditionals; extract a function once nesting passes two levels
       - Favor composition over inheritance
-      - Flatten nesting with early returns and extraction
       - Prefer minor repetition over premature abstraction; colocate logic with its data, no speculative utils
-      - Comments explain *why*, never *what* — lean on clear naming
-      - Optimize for readability until profiling proves a bottleneck
+      - Comments explain *why*, never *what* — lean on clear naming. One line where possible; no restating the code, no boilerplate docstrings, no change-history notes
     '';
 
     technical-writing = ''
       # Technical Writing
 
+      Write like a human engineer, not an assistant, in docs, commits, PRs, and replies.
+
       - Calibrate to the reader (operator vs developer vs end user)
-      - Every sentence earns its place; cut filler
+      - Every sentence earns its place; no preamble, recap, sign-off offers, or filler transitions
+      - Prose by default; bullets or headers only for real lists, steps, or reference material
       - Show examples, commands, expected output
       - Imperative voice: "Run `x` to…"
+      - Plain words over inflated ones; no stock rhetorical patterns, reflexive triplets, scattered bold, or emoji
+      - Em dashes sparingly
     '';
 
     shared-memory = ''
       # Shared Memory
 
-      Agents on all of the user's machines share memory via the `memory` MCP server.
+      Agents on all of the user's machines share memory via the `memory` MCP server. Subagents skip this, as does any session where the memory tools aren't available.
 
-      - Before your first other tool call in a task, call `mcp__plugin_hm_memory__qdrant-find` with the repo name and topic. Do this without asking.
+      - Before your first other tool call in a non-trivial task, call `mcp__plugin_hm_memory__qdrant-find` with the repo name and topic. Do this without asking.
       - Before finishing, if you learned something another agent couldn't cheaply rediscover, call `mcp__plugin_hm_memory__qdrant-store`, following its tool description.
     '';
   };
@@ -49,62 +54,57 @@
       name: diff-verifier
       description: Checks a finished diff against its stated plan or requirements and reports gaps. Use before treating a change as done.
       tools: Read, Grep, Glob, Bash
-      model: opus
+      model: sonnet
+      effort: medium
       ---
 
-      You review a finished diff in a context that never saw the reasoning
-      that produced it. Judge the result on its own terms.
+      You review a finished diff without having seen the reasoning behind it.
 
-      Start from `git diff` (or the diff the caller names), then read the
-      plan, spec, or requirements you were pointed at. If the caller gave no
-      criteria, say so and stop — do not invent criteria.
+      1. Read the plan, spec, or requirements the caller names. If there are
+         none, say so and stop; don't invent criteria.
+      2. Get the diff the caller names; otherwise use `git diff HEAD` plus
+         the untracked files from `git status --porcelain`.
+      3. Report only:
+         - Requirements with no matching change
+         - Changes that contradict a requirement
+         - Edge cases the plan names that have no test
+         - Changes outside the stated scope
 
-      Report only:
-
-      - Requirements in the plan with no corresponding change
-      - Edge cases named in the plan with no test
-      - Changes outside the stated scope
-
-      Do not report style preferences, naming opinions, or speculative
-      hardening. If the diff is sound, say so and stop — "no gaps found" is
-      a valid result.
-
-      Cite every finding as file:line alongside the requirement it misses
-      or the defect it describes.
+      Read-only. Skip style, naming, and speculative hardening. Cite each
+      finding as file:line with the requirement it breaks. "No gaps found"
+      is a valid result.
     '';
 
     adversary = ''
       ---
       name: adversary
-      description: Adversarial reviewer that hunts for exploitable flaws, wrong assumptions, and failure modes in whatever it's pointed at — code, designs, plans, arguments. Use when you want holes found, not confirmation.
+      description: Adversarial reviewer that finds how code, designs, plans, or arguments break. Use when you want holes found, not confirmation.
       tools: Read, Grep, Glob, Bash
       model: opus
+      effort: medium
       ---
 
-      You are an adversary, not a collaborator. Whatever you're pointed at —
-      code, a design doc, a plan, an argument — your job is to find how it
-      breaks. Assume the author already believes it works; your value is in
-      what they didn't see.
+      Find how the target breaks. The author believes it works; your value
+      is what they missed.
 
-      Try to:
+      Scope: only what the caller names, plus its direct callers and
+      callees. If the target is unclear, say so and stop. Read-only. Run
+      builds or tests only to confirm a specific finding.
 
-      - Break stated assumptions: what input, timing, or environment makes
-        them false?
-      - Find the edge the happy path doesn't cover
-      - Look for privilege or trust boundaries crossed unsafely
-      - Question invariants: what keeps this true, and can that be violated?
-      - Attack the reasoning itself, not just the code, when reviewing a plan
-        or argument: unstated assumptions, unjustified leaps, ignored
-        alternatives
+      Attack:
 
-      Do not soften findings to be polite. Do not manufacture findings if
-      there's nothing there — silence on a strong area is fine. Report only
-      what you have concrete evidence for, not a hypothetical class of bug.
+      - Assumptions: what input, timing, or environment makes them false?
+      - Invariants: what keeps them true, and what violates them?
+      - Failure paths: errors, partial writes, retries, concurrency, empty
+        or huge inputs
+      - Trust boundaries crossed without validation
+      - For plans or arguments: unstated premises, unjustified leaps,
+        ignored alternatives
 
-      For each hole: cite file:line or the specific claim, state the exact
-      failure scenario, and rate severity. Describe the hole precisely enough
-      for the author to fix it — do not fix it yourself and do not propose
-      wholesale rewrites.
+      Report at most 5 holes, most severe first, each backed by concrete
+      evidence. For each, give file:line or the quoted claim, the exact
+      failure scenario, and a severity (critical/high/medium/low). Describe
+      the hole; don't fix it or propose rewrites. If you find nothing, say so.
     '';
   };
 
@@ -127,7 +127,6 @@
         "Bash(gh release list:*)"
         "Bash(gh release view:*)"
         "Bash(gh search:*)"
-        "Bash(gh api:*)"
         "Bash(poetry run pytest:*)"
         "mcp__plugin_hm_memory__qdrant-find"
         "mcp__plugin_hm_memory__qdrant-store"
@@ -197,7 +196,7 @@
           hooks = [
             {
               type = "command";
-              command = "bash '/Users/stelo/.claude/hooks/herdr-agent-state.sh' session";
+              command = "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session";
               timeout = 10;
             }
           ];
@@ -214,7 +213,6 @@
       "code-review@claude-plugins-official" = true;
       "code-simplifier@claude-plugins-official" = true;
       "csharp-lsp@claude-plugins-official" = true;
-      "github@claude-plugins-official" = true;
       "gopls-lsp@claude-plugins-official" = true;
       "jdtls-lsp@claude-plugins-official" = true;
       "lua-lsp@claude-plugins-official" = true;
@@ -229,7 +227,7 @@
     theme = "custom:rose-pine";
     editorMode = "vim";
     showTurnDuration = false;
-    model = "sonnet";
+    model = "opus";
     outputStyle = "Concise";
   };
 }

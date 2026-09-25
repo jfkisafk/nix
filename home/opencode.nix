@@ -2,28 +2,7 @@
   enable = true;
   package = null;
 
-  context = ''
-    # Engineering Standards
-
-    - Staff/Principal altitude: blast radius, downstream consumers, deployment
-    - Correctness over cleverness; simpler path wins
-    - Surface assumptions explicitly; if uncertain or ambiguous, ask before coding
-    - Surgical: every changed line traces to the request
-    - Define verifiable success criteria before implementing
-    - Flag: N+1 queries, blocking calls in hot paths, missing indexes, unbounded result sets
-    - Favor composition over inheritance
-    - Flatten nesting with early returns and extraction
-    - Prefer minor repetition over premature abstraction; colocate logic with its data, no speculative utils
-    - Comments explain *why*, never *what* — lean on clear naming
-    - Optimize for readability until profiling proves a bottleneck
-
-    # Technical Writing
-
-    - Calibrate to the reader (operator vs developer vs end user)
-    - Every sentence earns its place; cut filler
-    - Show examples, commands, expected output
-    - Imperative voice: "Run `x` to…"
-  '';
+  context = with (import ./claude.nix { }).rules; engineering + "\n" + technical-writing;
 
   settings = {
     model = "anthropic/claude-sonnet-4-5";
@@ -48,7 +27,6 @@
         "gh release list*" = "allow";
         "gh release view*" = "allow";
         "gh search*" = "allow";
-        "gh api*" = "allow";
         "*" = "ask";
       };
     };
