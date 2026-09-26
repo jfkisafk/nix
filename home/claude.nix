@@ -238,7 +238,10 @@
     };
 
     syntaxHighlightingDisabled = false;
-    effortLevel = "high";
+    modelSettings = {
+      "claude-sonnet-5".effortLevel = "high";
+      "claude-opus-5-5".effortLevel = "medium";
+    };
     theme = "custom:rose-pine";
     editorMode = "vim";
     showTurnDuration = false;

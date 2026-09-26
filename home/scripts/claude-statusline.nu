@@ -15,7 +15,7 @@ def pine [] { "\u{1b}[1;38;2;62;143;176m" } # pine
 
 # total_cost_usd is a running per-session total, so only the delta since the last reading is added.
 # A reading below the baseline means a resumed session, which is counted in full.
-# starship.nix (custom.llm_cost) reads monthly_cost directly; keep the schema in sync.
+# llm-cost.nu (starship's custom.llm_cost) reads monthly_cost directly; keep the schema in sync.
 def update_cost_mtd [input: record] {
   let cost_usd = ($input | get -o cost.total_cost_usd)
   let session_id = ($input | get -o session_id)

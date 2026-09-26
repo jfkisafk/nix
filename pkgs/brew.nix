@@ -4,7 +4,6 @@
   onActivation.upgrade = true;
   onActivation.autoUpdate = true;
   brews = [
-    "herdr"
     "opencode"
     "pueue"
   ];

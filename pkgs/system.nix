@@ -1,19 +1,13 @@
 { pkgs, inputs, ... }: with pkgs; [
-  atuin
   azure-cli
-  awscli2
-  bat
   bat-extras.batman
   bat-extras.batgrep
   bat-extras.batwatch
   bat-extras.batdiff
   bat-extras.batpipe
   bat-extras.prettybat
-  btop
   buildkit
-  carapace
   delta
-  direnv
   docker
   fastfetch
   fd
@@ -21,7 +15,6 @@
   fzf
   gcc
   gh
-  git
   gitleaks
   go-swagger
   grc
@@ -34,7 +27,6 @@
   jq
   jqp
   jwt-cli
-  k9s
   kind
   kubectl-ktop
   kube-prompt
@@ -45,7 +37,6 @@
   kubelogin
   kubernetes-helm
   kubetail
-  lazygit
   lazydocker
   lazysql
   lua51Packages.lua
@@ -70,25 +61,20 @@
   protoc-gen-go-grpc
   rainfrog
   redis
-  ripgrep
   skaffold
   skim
   slack-cli
   sqlite
-  starship
   stow
   tailscale
   tectonic
   tig
-  tmux
   tmuxifier
   tree
   uv
   valkey
   vim
-  yazi
   yj
   yq
-  zoxide
   zsh
 ]

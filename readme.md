@@ -34,7 +34,8 @@ Linux machines as well.
 - **activation.nix**: Activation scripts for the system. Currently used to:
   - setup the default shell to [Nushell](https://www.nushell.sh/)
   - generate an SSH key if one does not exist
-  - install language tools via [mise](https://mise.jdx.dev): node, deno, dotnet, bun, yarn, python, poetry, java, rust, go, ruby, spectral, terraform. Nushell init script sets up mise environment variables accordingly.
+  - upgrade and prune the [mise](https://mise.jdx.dev) language tools declared in _home/mise.nix_
+  - install the `vim-herdr-navigation` plugin for herdr
 
 ### Home Manager
 
@@ -43,15 +44,19 @@ Linux machines as well.
 
 It specifies the following configurations:
 
-- **[Atuin](https://atuin.sh/)**: Helps with the history of commands.
+- **[Atuin](https://atuin.sh/)**: Shell history search with a rose pine theme defined inline.
 - **AWS**: Configures AWS CLI profiles.
 - **[Bat](https://github.com/sharkdp/bat)**: Syntax highlighting replacement for cat.
 - **[btop](https://github.com/aristocratos/btop)**: Resource monitor in terminal. Rose pine colorscheme defined inline.
 - **[Carapace](https://carapace.sh/)**: Autocomplete for the shell.
 - **[Direnv](https://direnv.net/)**: Automatically loads environment variables.
 - **Git**: Configures git with SSH signing, [delta](https://github.com/dandavison/delta) for better git diffs, and a comprehensive global gitignore.
-- **[Nushell](https://www.nushell.sh/)**: Loads nushell configurations from home directory. Sources atuin, carapace, direnv, starship and tmux plugins. Loads mise environment variables and defines extra keybindings and aliases. Ctrl+T opens a [herdr](https://github.com/stelo-labs/herdr) session.
-- **[Starship](https://starship.rs/)**: Rose pine themed prompt.
+- **[Nushell](https://www.nushell.sh/)**: Default shell. Atuin, carapace, direnv, mise, starship and zoxide hook in through their home-manager modules. Loads mise environment variables and defines extra keybindings and aliases. Ctrl+T opens a [herdr](https://github.com/stelo-labs/herdr) session.
+- **[Starship](https://starship.rs/)**: Rose pine themed prompt, including a segment for this month's Claude Code spend (_home/scripts/llm-cost.nu_).
+- **[mise](https://mise.jdx.dev)**: Global language toolchain: node, deno, dotnet, bun, yarn, python, poetry, java, rust, go, spectral, terraform.
+- **[zoxide](https://github.com/ajeetdsouza/zoxide)**: Smarter `cd`, bound to `cd` itself.
+- **[herdr](https://github.com/stelo-labs/herdr)**: Terminal workspace manager with a rose pine theme, tmux-style `ctrl+s` prefix, vim-aware ctrl+hjkl pane navigation, and sound alerts for agent completion and requests.
+- **[Karabiner-Elements](https://karabiner-elements.pqrs.org)**: Caps Lock as Ctrl (Esc when tapped), Tab as Hyper (Tab when tapped), Left Ctrl as Cmd+Option, and Right Cmd+hjkl as arrow keys.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with rose pine status bar and custom keybindings and plugins.
 - **[K9s](https://k9scli.io/)**: Kubernetes TUI with rose pine skin defined inline.
 - **[Yazi](https://yazi-rs.github.io)**: Terminal file manager with rose pine colorscheme and a comprehensive inline icon theme.
@@ -94,9 +99,4 @@ This will add `darwin-rebuild` to your path, so for further updates you can simp
 > [!WARNING]
 > This command needs to be run from the root of this repo folder. Otherwise, you can provide the path to folder where you cloned this repo (path to _flake.nix_).
 
-This command will also setup the home directory _/Users/stelo_ but if you are making further changes to home configuration,
-you will need to run this command:
-
-```sh
-home-manager switch --flake /path/to/flake.nix
-```
+This command also sets up the home directory _/Users/stelo_. Home Manager runs as a nix-darwin module, so the same command applies changes under _home/_; there is no separate `home-manager switch`.

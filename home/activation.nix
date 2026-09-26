@@ -1,5 +1,4 @@
 { pkgs, lib, ... }: {
-  ## Generate SSH key if it doesn't exist
   generateSshKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
       /run/current-system/sw/bin/ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -C "contact@stelo.dev"
@@ -10,14 +9,12 @@
     fi
   '';
 
-  # Alternative approach: Add to activation script
   sshPermissions = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -d "$HOME/.ssh" ]; then
       chmod 700 "$HOME/.ssh"
     fi
   '';
 
-  # Set up default shell
   postActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
     current_shell=$(basename "$SHELL")
     if [ "$current_shell" != "nu" ]; then
@@ -28,37 +25,22 @@
     fi
   '';
 
-  # Set up mise tools
-  installMiseTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  # After linkGeneration so mise.nix's global config exists
+  installMiseTools = lib.hm.dag.entryAfter ["linkGeneration"] ''
     (
     export PATH="/run/current-system/sw/bin:/usr/bin:/bin:$PATH"
-
-    mise settings set python.compile false
-
-    tools=(
-    "node@lts"
-    "deno@2"
-    "dotnet@10"
-    "bun@1"
-    "yarn@4"
-    "python@3"
-    "poetry@1"
-    "java@corretto-26"
-    "rust@stable"
-    "go@1"
-    "spectral@6"
-    "terraform@1"
+    mise upgrade
+    mise prune
     )
+  '';
 
-    for tool in "''${tools[@]}"; do
-    if ! /run/current-system/sw/bin/mise current | grep -q "$(echo $tool | cut -d@ -f1)" || \
-        /run/current-system/sw/bin/mise outdated --quiet | grep -q "$(echo $tool | cut -d@ -f1)"; then
-        /run/current-system/sw/bin/mise use --global "$tool"
+  # herdr.nix binds ctrl+hjkl to this plugin; install needs git on PATH
+  installHerdrPlugins = lib.hm.dag.entryAfter ["linkGeneration"] ''
+    (
+    export PATH="${pkgs.git}/bin:$PATH"
+    if ! ${pkgs.herdr}/bin/herdr plugin list | grep -q vim-herdr-navigation; then
+      ${pkgs.herdr}/bin/herdr plugin install paulbkim-dev/vim-herdr-navigation --yes
     fi
-    done
-
-    /run/current-system/sw/bin/mise upgrade
-    /run/current-system/sw/bin/mise prune
     )
   '';
 }

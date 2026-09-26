@@ -78,18 +78,6 @@
       $"($env.HOME)/.local/share/nvim/mason/bin"
     ] | append ($env.PATH | default [] | split row (char esep)) | uniq)
 
-    # Activate mise
-    mise activate nu | save -f ~/.cache/mise.nu
-    source ~/.cache/mise.nu
-
-    # Activate atuin
-    atuin init nu | str replace --regex 'name:\s*atuin\s*\n\s*modifier:\s*none' "name: atuin_up\n            modifier: none" | save -f ~/.cache/atuin.nu
-    source ~/.cache/atuin.nu
-
-    # Activate zoxide
-    zoxide init nushell --cmd=cd | save -f ~/.cache/zoxide.nu
-    source ~/.cache/zoxide.nu
-
     load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/10" }
 
     # Set all mise environment variables including PATH
