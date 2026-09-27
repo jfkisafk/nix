@@ -2,6 +2,9 @@
   enable = true;
   lfs.enable = true;
 
+  # programs.delta sets pager.diff too, and settings strips mkForce; diffnav renders through delta anyway.
+  iniContent.pager.diff = pkgs.lib.mkForce "diffnav";
+
   ignores = [
     "*.iml"
     ".idea/*"
@@ -53,7 +56,6 @@
   settings = {
     core = {
       editor = "nvim -f";
-      pager = "delta";
       whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
       excludesfile = "~/.config/git/ignore";
     };
@@ -89,21 +91,9 @@
       lgb = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches";
     };
 
-    delta = {
-      side-by-side = true;
-      line-numbers = true;
-      hyperlinks = true;
-      hyperlinks-file-link-format = "idea://open?file={path}&line={line}";
-      line-numbers-minus-style = "#eb6f92";
-      line-numbers-plus-style = "#9ccfd8";
-      line-numbers-zero-style = "#6e6a86";
-      file-style = "bold \"#9ccfd8\"";
-    };
-
     gpg.format = "ssh";
     rebase.autoStash = true;
     rerere.enabled = true;
-    interactive.diffFilter = "delta --color-only";
     merge.conflictStyle = "zdiff3";
     pull.rebase = true;
     "diff \"pkgconfig\"".xfuncname = "[-[:alpha:]]+.*=.*\\{";

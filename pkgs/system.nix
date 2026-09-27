@@ -1,20 +1,13 @@
 { pkgs, inputs, ... }: with pkgs; [
   azure-cli
-  bat-extras.batman
-  bat-extras.batgrep
-  bat-extras.batwatch
-  bat-extras.batdiff
-  bat-extras.batpipe
-  bat-extras.prettybat
   buildkit
-  delta
+  diffnav
   docker
   fastfetch
   fd
   fish
   fzf
   gcc
-  gh
   gitleaks
   go-swagger
   grc

@@ -35,6 +35,12 @@
         executable = true;
       };
       ".config/karabiner/karabiner.json".source = import ./karabiner.nix { inherit pkgs; };
+      ".config/diffnav/config.yml".text = ''
+        ui:
+          hideHeader: true
+          sideBySide: false
+          icons: nerd-fonts-full
+      '';
       # Out-of-store so nvim config edits apply without a rebuild.
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Volumes/nitro/nvim";
     };
@@ -47,6 +53,8 @@
     nushell = import ./nu.nix { inherit pkgs; };
     starship = import ./starship.nix { inherit pkgs; };
     git = import ./git.nix { inherit pkgs; };
+    delta = import ./delta.nix { inherit pkgs; };
+    gh = import ./gh.nix { inherit pkgs; };
     tmux = import ./tmux.nix { inherit pkgs; };
     carapace = import ./carapace.nix { inherit pkgs; };
     bat = import ./bat.nix { inherit pkgs; };
