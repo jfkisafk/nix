@@ -225,7 +225,7 @@
 
     syntaxHighlightingDisabled = false;
     modelSettings = {
-      "claude-sonnet-5".effortLevel = "high";
+      "claude-sonnet-5-5".effortLevel = "high";
       "claude-opus-5-5".effortLevel = "medium";
     };
     theme = "custom:rose-pine";

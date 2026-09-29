@@ -65,6 +65,17 @@
       ]
     }
 
+    # superfile writes `cd '<dir>'` on quit (cd_on_quit in superfile.nix).
+    # --print-last-dir can't be used: capturing stdout swallows the TUI.
+    def --env y [...args] {
+      ^superfile ...$args
+      let lastdir = (^superfile pl --lastdir-file | str trim)
+      if ($lastdir | path exists) {
+        cd (open --raw $lastdir | str replace -r "^cd '(.*)'$" '$1')
+        rm $lastdir
+      }
+    }
+
     # Preserve existing PATH and add our additional paths
     $env.PATH = ([
       "/usr/bin/env"
@@ -104,6 +115,7 @@
     grep = "batgrep";
     rg = "batgrep";
     man = "batman";
+    spf = "superfile";
     # Git aliases
     g = "tig --all";
     ga = "git add";

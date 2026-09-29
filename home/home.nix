@@ -60,7 +60,7 @@
     bat = import ./bat.nix { inherit pkgs; };
     direnv = import ./direnv.nix { inherit pkgs; };
     btop = import ./btop.nix { inherit pkgs; };
-    yazi = import ./yazi.nix { inherit pkgs; };
+    superfile = import ./superfile.nix { inherit pkgs; };
     lazygit = import ./lazygit.nix { inherit pkgs; };
     k9s = import ./k9s.nix { inherit pkgs; };
     ripgrep = import ./ripgrep.nix { inherit pkgs; };
