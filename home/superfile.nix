@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   enable = true;
   firstUseCheck = false;
   # programs.zoxide already installs it.
@@ -28,48 +28,174 @@
   # Upstream vimHotkeys.toml plus h/l navigation and the spf prompt.
   # superfile warns on any missing key, so the full set is listed.
   hotkeys = {
-    confirm = [ "enter" "l" ];
-    quit = [ "ctrl+c" "" ];
-    list_up = [ "k" "" ];
-    list_down = [ "j" "" ];
-    page_up = [ "pgup" "" ];
-    page_down = [ "pgdown" "" ];
-    create_new_file_panel = [ "n" "" ];
-    close_file_panel = [ "q" "" ];
-    next_file_panel = [ "tab" "" ];
-    previous_file_panel = [ "shift+tab" "" ];
-    toggle_file_preview_panel = [ "f" "" ];
-    open_sort_options_menu = [ "o" "" ];
-    toggle_reverse_sort = [ "R" "" ];
-    focus_on_process_bar = [ "ctrl+p" "" ];
-    focus_on_sidebar = [ "ctrl+s" "" ];
-    focus_on_metadata = [ "ctrl+d" "" ];
-    file_panel_item_create = [ "a" "" ];
-    file_panel_item_rename = [ "r" "" ];
-    copy_items = [ "y" "" ];
-    cut_items = [ "x" "" ];
-    paste_items = [ "p" "" ];
-    delete_items = [ "d" "" ];
-    extract_file = [ "ctrl+e" "" ];
-    compress_file = [ "ctrl+a" "" ];
-    open_file_with_editor = [ "e" "" ];
-    open_current_directory_with_editor = [ "E" "" ];
-    pinned_directory = [ "P" "" ];
-    toggle_dot_file = [ "." "" ];
-    change_panel_mode = [ "m" "" ];
-    open_help_menu = [ "?" "" ];
-    open_command_line = [ ":" "" ];
-    open_spf_prompt = [ ">" "" ];
-    copy_path = [ "Y" "" ];
-    copy_present_working_directory = [ "c" "" ];
-    toggle_footer = [ "ctrl+f" "" ];
-    confirm_typing = [ "enter" "" ];
-    cancel_typing = [ "esc" "" ];
-    parent_directory = [ "-" "h" ];
-    search_bar = [ "/" "" ];
-    file_panel_select_mode_items_select_down = [ "J" "" ];
-    file_panel_select_mode_items_select_up = [ "K" "" ];
-    file_panel_select_all_items = [ "A" "" ];
+    confirm = [
+      "enter"
+      "l"
+    ];
+    quit = [
+      "ctrl+c"
+      ""
+    ];
+    list_up = [
+      "k"
+      ""
+    ];
+    list_down = [
+      "j"
+      ""
+    ];
+    page_up = [
+      "pgup"
+      ""
+    ];
+    page_down = [
+      "pgdown"
+      ""
+    ];
+    create_new_file_panel = [
+      "n"
+      ""
+    ];
+    close_file_panel = [
+      "q"
+      ""
+    ];
+    next_file_panel = [
+      "tab"
+      ""
+    ];
+    previous_file_panel = [
+      "shift+tab"
+      ""
+    ];
+    toggle_file_preview_panel = [
+      "f"
+      ""
+    ];
+    open_sort_options_menu = [
+      "o"
+      ""
+    ];
+    toggle_reverse_sort = [
+      "R"
+      ""
+    ];
+    focus_on_process_bar = [
+      "ctrl+p"
+      ""
+    ];
+    focus_on_sidebar = [
+      "ctrl+s"
+      ""
+    ];
+    focus_on_metadata = [
+      "ctrl+d"
+      ""
+    ];
+    file_panel_item_create = [
+      "a"
+      ""
+    ];
+    file_panel_item_rename = [
+      "r"
+      ""
+    ];
+    copy_items = [
+      "y"
+      ""
+    ];
+    cut_items = [
+      "x"
+      ""
+    ];
+    paste_items = [
+      "p"
+      ""
+    ];
+    delete_items = [
+      "d"
+      ""
+    ];
+    extract_file = [
+      "ctrl+e"
+      ""
+    ];
+    compress_file = [
+      "ctrl+a"
+      ""
+    ];
+    open_file_with_editor = [
+      "e"
+      ""
+    ];
+    open_current_directory_with_editor = [
+      "E"
+      ""
+    ];
+    pinned_directory = [
+      "P"
+      ""
+    ];
+    toggle_dot_file = [
+      "."
+      ""
+    ];
+    change_panel_mode = [
+      "m"
+      ""
+    ];
+    open_help_menu = [
+      "?"
+      ""
+    ];
+    open_command_line = [
+      ":"
+      ""
+    ];
+    open_spf_prompt = [
+      ">"
+      ""
+    ];
+    copy_path = [
+      "Y"
+      ""
+    ];
+    copy_present_working_directory = [
+      "c"
+      ""
+    ];
+    toggle_footer = [
+      "ctrl+f"
+      ""
+    ];
+    confirm_typing = [
+      "enter"
+      ""
+    ];
+    cancel_typing = [
+      "esc"
+      ""
+    ];
+    parent_directory = [
+      "-"
+      "h"
+    ];
+    search_bar = [
+      "/"
+      ""
+    ];
+    file_panel_select_mode_items_select_down = [
+      "J"
+      ""
+    ];
+    file_panel_select_mode_items_select_up = [
+      "K"
+      ""
+    ];
+    file_panel_select_all_items = [
+      "A"
+      ""
+    ];
   };
 
   # Built-in rose-pine is mostly white and uses off-palette colors (#31784f
@@ -103,7 +229,10 @@
     error = "#eb6f92";
     hint = "#3e8fb0";
     cancel = "#6e6a86";
-    gradient_color = [ "#3e8fb0" "#eb6f92" ];
+    gradient_color = [
+      "#3e8fb0"
+      "#eb6f92"
+    ];
 
     file_panel_top_directory_icon = "#3e8fb0";
     file_panel_top_path = "#ea9a97";
@@ -125,8 +254,17 @@
   };
 
   pinnedFolders = [
-    { name = "nix"; location = "/Volumes/nitro/nix"; }
-    { name = "nvim"; location = "/Volumes/nitro/nvim"; }
-    { name = "Downloads"; location = "/Users/stelo/Downloads"; }
+    {
+      name = "nix";
+      location = "/Volumes/nitro/nix";
+    }
+    {
+      name = "nvim";
+      location = "/Volumes/nitro/nvim";
+    }
+    {
+      name = "Downloads";
+      location = "/Users/stelo/Downloads";
+    }
   ];
 }

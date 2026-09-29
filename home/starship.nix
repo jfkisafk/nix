@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   enable = true;
   enableNushellIntegration = true;
 
@@ -17,8 +17,8 @@
       iris = "#c4a7e7";
     };
 
-    format = ''$username$directory$git_branch$git_status$character'';
-    right_format = ''$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python''${custom.llm_cost}$time'';
+    format = "$username$directory$git_branch$git_status$character";
+    right_format = "$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python\${custom.llm_cost}$time";
 
     character = {
       format = "$symbol  ";
@@ -171,7 +171,10 @@
 
     custom.llm_cost = {
       command = "source ${./scripts/llm-cost.nu}";
-      shell = ["nu" "-c"];
+      shell = [
+        "nu"
+        "-c"
+      ];
       style = "bg:overlay fg:love";
       format = "[](fg:overlay)[⚡$output]($style)[](fg:overlay) ";
       when = "true";
@@ -190,7 +193,10 @@
     claude_cost = {
       symbol = "󰴈 ";
       display = [
-        { threshold = 0; style = "bold rose"; }
+        {
+          threshold = 0;
+          style = "bold rose";
+        }
       ];
     };
   };

@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: with pkgs; [
+{ pkgs, ... }: with pkgs;
+[
   azure-cli
   buildkit
   diffnav
@@ -15,7 +16,6 @@
   grpcurl
   htop
   imagemagick
-  home-manager
   istioctl
   jq
   jqp
@@ -43,8 +43,9 @@
   neovim
   nerdfetch
   netcoredbg
+  nixd
+  nixfmt
   nushell
-  oh-my-posh
   ollama
   openssh
   (oxker.overrideAttrs { doCheck = false; })

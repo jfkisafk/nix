@@ -1,13 +1,22 @@
-{ pkgs, ... }: {
+{ ... }: {
   enable = true;
   settings = {
     gui.theme = {
-      activeBorderColor = [ "#3e8fb0" "bold" ];
+      activeBorderColor = [
+        "#3e8fb0"
+        "bold"
+      ];
       inactiveBorderColor = [ "#6e6a86" ];
-      searchingActiveBorderColor = [ "#ea9a97" "bold" ];
+      searchingActiveBorderColor = [
+        "#ea9a97"
+        "bold"
+      ];
       optionsTextColor = [ "#9ccfd8" ];
       selectedLineBgColor = [ "#3e8fb0" ];
-      inactiveViewSelectedLineBgColor = [ "#26233a" "bold" ];
+      inactiveViewSelectedLineBgColor = [
+        "#26233a"
+        "bold"
+      ];
       cherryPickedCommitFgColor = [ "#1f1d2e" ];
       cherryPickedCommitBgColor = [ "#ea9a97" ];
       markedBaseCommitFgColor = [ "#9ccfd8" ];

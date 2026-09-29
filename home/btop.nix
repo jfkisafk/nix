@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   enable = true;
   settings = {
     color_theme = "rose-pine";

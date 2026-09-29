@@ -31,9 +31,9 @@ No tests, no linter. CI is `.github/workflows/gitleaks.yml` (secret scan) only.
 
 `home/karabiner.nix` is not a program module: it returns a `writeText` derivation linked as `.config/karabiner/karabiner.json` from `home.file`, leaving the directory writable for Karabiner-Elements.
 
-Each `home/<file>.nix` is `{ pkgs, ... }: { enable = true; ... }` — the attrset *is* the value of `programs.<name>`. The attr name is not always the filename: `claude-code`→`claude.nix`, `awscli`→`aws.nix`, `nushell`→`nu.nix`.
+Each `home/<file>.nix` is `{ ... }: { enable = true; ... }`, or `{ pkgs, ... }:` if it references `pkgs` — the attrset *is* the value of `programs.<name>`. The attr name is not always the filename: `claude-code`→`claude.nix`, `awscli`→`aws.nix`, `nushell`→`nu.nix`.
 
-Add a program: write `home/<file>.nix`, then add `<name> = import ./<file>.nix { inherit pkgs; };` to `programs` in `home/home.nix`. Copy `home/bat.nix` (minimal) or `home/git.nix` (full) for shape.
+Add a program: write `home/<file>.nix`, then add `<name> = import ./<file>.nix { };` to `programs` in `home/home.nix`, passing `{ inherit pkgs; }` only if the module takes `pkgs`. Copy `home/bat.nix` (minimal) or `home/git.nix` (full) for shape.
 
 `opencode.nix` reads the engineering and technical-writing rules from `claude.nix`; edit them there only.
 

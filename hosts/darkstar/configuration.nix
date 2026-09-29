@@ -1,4 +1,9 @@
-{ pkgs, config, inputs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   # Set the home directory for the user.
   users.users.stelo.home = "/Users/stelo";
@@ -16,6 +21,10 @@
   services.tailscale.enable = true;
   environment.etc."resolver/ts.net".enable = lib.mkForce false;
 
+  # darwin-rebuild's default flake; nvim's nixd config reads it too.
+  # A string, not ./. — a path literal would copy the flake into the store instead of linking the checkout.
+  environment.etc."nix-darwin".source = "/Volumes/nitro/nix";
+
   system = {
     # Set Git commit hash for darwin-version.
     configurationRevision = null;
@@ -26,11 +35,11 @@
 
     primaryUser = "stelo";
     startup.chime = false;
-    defaults = import ../../system/mac.nix { inherit pkgs; };
+    defaults = import ../../system/mac.nix { };
   };
 
   # Packages
-  homebrew = import ../../pkgs/brew.nix { inherit pkgs; };
+  homebrew = import ../../pkgs/brew.nix { };
   fonts = import ../../pkgs/fonts.nix { inherit pkgs; };
 
   # Environment
@@ -40,6 +49,6 @@
       nushell
       zsh
     ];
-    systemPackages = import ../../pkgs/system.nix { inherit pkgs inputs; };
+    systemPackages = import ../../pkgs/system.nix { inherit pkgs; };
   };
 }

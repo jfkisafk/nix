@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
-  
+{ ... }: {
+
   enable = true;
-    
+
   settings = {
     default = {
       region = "us-west-2";
@@ -54,4 +54,5 @@
       sso_registration_scopes = "sso:account:access";
     };
   };
-} 
+}
+

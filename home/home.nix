@@ -48,27 +48,27 @@
 
   programs = {
     home-manager.enable = true;
-    atuin = import ./atuin.nix { inherit pkgs; };
-    awscli = import ./aws.nix { inherit pkgs; };
-    nushell = import ./nu.nix { inherit pkgs; };
-    starship = import ./starship.nix { inherit pkgs; };
+    atuin = import ./atuin.nix { };
+    awscli = import ./aws.nix { };
+    nushell = import ./nu.nix { };
+    starship = import ./starship.nix { };
     git = import ./git.nix { inherit pkgs; };
-    delta = import ./delta.nix { inherit pkgs; };
+    delta = import ./delta.nix { };
     gh = import ./gh.nix { inherit pkgs; };
     tmux = import ./tmux.nix { inherit pkgs; };
-    carapace = import ./carapace.nix { inherit pkgs; };
+    carapace = import ./carapace.nix { };
     bat = import ./bat.nix { inherit pkgs; };
-    direnv = import ./direnv.nix { inherit pkgs; };
-    btop = import ./btop.nix { inherit pkgs; };
-    superfile = import ./superfile.nix { inherit pkgs; };
-    lazygit = import ./lazygit.nix { inherit pkgs; };
-    k9s = import ./k9s.nix { inherit pkgs; };
-    ripgrep = import ./ripgrep.nix { inherit pkgs; };
-    claude-code = import ./claude.nix { inherit pkgs; };
-    opencode = import ./opencode.nix { inherit pkgs; };
-    ghostty = import ./ghostty.nix { inherit pkgs; };
-    mise = import ./mise.nix { inherit pkgs; };
-    zoxide = import ./zoxide.nix { inherit pkgs; };
-    herdr = import ./herdr.nix { inherit pkgs; };
+    direnv = import ./direnv.nix { };
+    btop = import ./btop.nix { };
+    superfile = import ./superfile.nix { };
+    lazygit = import ./lazygit.nix { };
+    k9s = import ./k9s.nix { };
+    ripgrep = import ./ripgrep.nix { };
+    claude-code = import ./claude.nix { };
+    opencode = import ./opencode.nix { };
+    ghostty = import ./ghostty.nix { };
+    mise = import ./mise.nix { };
+    zoxide = import ./zoxide.nix { };
+    herdr = import ./herdr.nix { };
   };
 }

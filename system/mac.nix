@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   NSGlobalDomain = {
     AppleIconAppearanceTheme = "ClearDark";
     AppleShowAllExtensions = true;
