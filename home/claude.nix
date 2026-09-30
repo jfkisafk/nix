@@ -129,6 +129,10 @@
         "Bash(gh release view:*)"
         "Bash(gh search:*)"
         "Bash(poetry run pytest:*)"
+        "Bash(nix eval:*)"
+        "Bash(nix flake metadata:*)"
+        "Bash(nix path-info:*)"
+        "Bash(darwin-rebuild --list-generations:*)"
         "mcp__plugin_hm_memory__qdrant-find"
         "mcp__plugin_hm_memory__qdrant-store"
       ];

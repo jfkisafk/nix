@@ -93,10 +93,9 @@ nix run nix-darwin --extra-experimental-features "nix-command flakes"  -- switch
 This will add `darwin-rebuild` to your path, so for further updates you can simply run:
 
 ```sh
-/run/current-system/sw/bin/darwin-rebuild switch --flake .#darkstar
+sudo darwin-rebuild switch
 ```
 
-> [!WARNING]
-> This command needs to be run from the root of this repo folder. Otherwise, you can provide the path to folder where you cloned this repo (path to _flake.nix_).
+The config links _/etc/nix-darwin_ to _/Volumes/nitro/nix_, and `darwin-rebuild` uses the flake there, so the command works from any directory. It picks `darkstar` from the hostname.
 
 This command also sets up the home directory _/Users/stelo_. Home Manager runs as a nix-darwin module, so the same command applies changes under _home/_; there is no separate `home-manager switch`.

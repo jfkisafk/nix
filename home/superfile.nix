@@ -18,7 +18,7 @@
     sort_order_reversed = true;
     code_previewer = "bat";
     nerdfont = true;
-    transparent_background = false;
+    transparent_background = true;
     sidebar_width = 20;
     metadata = true;
     enable_md5_checksum = false;
