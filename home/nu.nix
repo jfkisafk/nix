@@ -39,31 +39,27 @@
         git => $fish_completer
         # use zoxide completions for zoxide commands
         __zoxide_z | __zoxide_zi | cd | cdi => $zoxide_completer
-        _ => $carapace_completer
+        # carapace only bridges commands with a completion file; fish also
+        # parses --help on the fly (e.g. claude), so fall back to it
+        _ => {|spans|
+          let completions = do $carapace_completer $spans
+          if ($completions | is-empty) { do $fish_completer $spans } else { $completions }
+        }
       } | do $in $spans
     }
 
-    $env.config = {
-      show_banner: false,
-      completions: {
-        external: {
-          enable: true
-          completer: $external_completer
-        }
-      },
-      keybindings: [
-        {
-          name: open_herdr_session
-          modifier: Control
-          keycode: char_t
-          mode: [emacs, vi_normal, vi_insert]
-          event: {
-            send: executehostcommand
-            cmd: "herdr"
-          }
-        }
-      ]
-    }
+    # assign fields, not the whole record, to keep hooks added by integrations (mise)
+    $env.config.show_banner = false
+    $env.config.completions.external = { enable: true, completer: $external_completer }
+    $env.config.keybindings ++= [
+      {
+        name: open_herdr_session
+        modifier: Control
+        keycode: char_t
+        mode: [emacs, vi_normal, vi_insert]
+        event: { send: executehostcommand, cmd: "herdr" }
+      }
+    ]
 
     # superfile writes `cd '<dir>'` on quit (cd_on_quit in superfile.nix).
     # --print-last-dir can't be used: capturing stdout swallows the TUI.
@@ -76,35 +72,16 @@
       }
     }
 
-    # Preserve existing PATH and add our additional paths
-    $env.PATH = ([
-      "/usr/bin/env"
+    $env.PATH = ($env.PATH | prepend [
       "/run/current-system/sw/bin"
       $"($env.HOME)/.nix-profile/bin"
       $"($env.HOME)/.dotnet/tools"
       "/nix/var/nix/profiles/default/bin"
-      "/run/current-system/sw/bin"
-      $"/etc/profiles/per-user/($env.USER)/bin"
       "/opt/homebrew/bin"
       $"($env.HOME)/.local/share/nvim/mason/bin"
-    ] | append ($env.PATH | default [] | split row (char esep)) | uniq)
+    ] | uniq)
 
-    load-env { DOTNET_ROOT: $"($env.HOME)/.local/share/mise/installs/dotnet/10" }
-
-    # Set all mise environment variables including PATH
-    let mise_env = (mise env --json | from json)
-    let skip_vars = ["PATH", "TERM"]
-    for entry in ($mise_env | columns) {
-        if $entry == "PATH" {
-            # Merge PATH entries, removing duplicates
-            $env.PATH = (
-                ($mise_env | get PATH | split row ":" |
-                append $env.PATH) | uniq
-            )
-        } else if $entry not-in $skip_vars {
-            load-env {($entry): ($mise_env | get $entry)}
-        }
-    }
+    $env.DOTNET_ROOT = $"($env.HOME)/.local/share/mise/installs/dotnet/10"
   '';
 
   shellAliases = {
@@ -139,7 +116,7 @@
   };
 
   environmentVariables = {
-    CARAPACE_BRIDGES = "argcomplete,inshellisense,cobra,click,urfavecli,yargs,kingpin,carapace";
+    CARAPACE_BRIDGES = "zsh,fish,bash";
     CARAPACE_MATCH = 1;
     LESSOPEN = "|batpipe %s";
     LESS = "-R";

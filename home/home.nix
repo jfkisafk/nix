@@ -35,6 +35,13 @@
         executable = true;
       };
       ".config/karabiner/karabiner.json".source = import ./karabiner.nix { inherit pkgs; };
+      # opencode is yargs-based and ships no zsh/fish/bash completion file for CARAPACE_BRIDGES to find
+      "Library/Application Support/carapace/specs/opencode.yaml".text = ''
+        name: opencode
+        parsing: disabled
+        completion:
+          positionalany: ["$carapace.bridge.Yargs([opencode])"]
+      '';
       ".config/diffnav/config.yml".text = ''
         ui:
           hideHeader: true
