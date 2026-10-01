@@ -137,6 +137,7 @@
         "Bash(nix flake metadata:*)"
         "Bash(nix path-info:*)"
         "Bash(darwin-rebuild --list-generations:*)"
+        "Skill(commit-msg)"
         "mcp__plugin_hm_memory__qdrant-find"
         "mcp__plugin_hm_memory__qdrant-store"
       ];
@@ -155,6 +156,7 @@
         "CronList"
         "Skill(dataviz)"
         "Skill(update-config)"
+        "mcp__computer-use"
       ];
     };
 
