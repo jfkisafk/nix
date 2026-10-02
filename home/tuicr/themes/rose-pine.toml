@@ -1,0 +1,53 @@
+# Diff backgrounds match home/delta.nix.
+# Reuses bat's patched tmTheme from home/bat.nix; resolved relative to this file.
+syntax_theme = "../../bat/themes/rose-pine.tmTheme"
+
+panel_bg = "#191724"
+bg_highlight = "#26233a"
+fg_primary = "#e0def4"
+fg_secondary = "#908caa"
+fg_dim = "#6e6a86"
+
+diff_add = "#9ccfd8"
+diff_add_bg = "#333c48"
+diff_del = "#eb6f92"
+diff_del_bg = "#43293a"
+diff_context = "#e0def4"
+diff_hunk_header = "#ea9a97"
+expanded_context_fg = "#6e6a86"
+
+syntax_add_bg = "#333c48"
+syntax_del_bg = "#43293a"
+
+file_added = "#9ccfd8"
+file_modified = "#f6c177"
+file_deleted = "#eb6f92"
+file_renamed = "#c4a7e7"
+
+reviewed = "#9ccfd8"
+pending = "#f6c177"
+
+comment_note = "#3e8fb0"
+comment_suggestion = "#9ccfd8"
+comment_issue = "#eb6f92"
+comment_praise = "#c4a7e7"
+
+border_focused = "#3e8fb0"
+border_unfocused = "#6e6a86"
+status_bar_bg = "#1f1d2e"
+cursor_color = "#f6c177"
+cursor_line_bg = "#21202e"
+branch_name = "#c4a7e7"
+help_indicator = "#908caa"
+
+message_info_fg = "#191724"
+message_info_bg = "#3e8fb0"
+message_warning_fg = "#191724"
+message_warning_bg = "#f6c177"
+message_error_fg = "#191724"
+message_error_bg = "#eb6f92"
+update_badge_fg = "#191724"
+update_badge_bg = "#f6c177"
+
+mode_fg = "#191724"
+mode_bg = "#c4a7e7"

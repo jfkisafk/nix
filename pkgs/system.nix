@@ -65,6 +65,7 @@
   tig
   tmuxifier
   tree
+  tuicr
   uv
   valkey
   vim

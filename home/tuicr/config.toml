@@ -1,0 +1,14 @@
+theme = "rose-pine"
+
+ignore_whitespace = true
+comment_vim = true
+relative_line_numbers = true
+scroll_offset = 5
+editor = "nvim"
+
+# Colors are rose-pine iris, gold, and love. The first entry is the default type.
+comment_types = [
+  { id = "question", definition = "ask for clarification", color = "#c4a7e7" },
+  { id = "nitpick", definition = "small optional tweak", color = "#ea9a97" },
+  { id = "blocker", definition = "must be fixed before merge", color = "#eb6f92" },
+]

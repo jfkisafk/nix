@@ -16,7 +16,9 @@ No tests, no linter. CI is `.github/workflows/gitleaks.yml` (secret scan) only.
 
 ## home/
 
-`home/home.nix` holds `home.file` (static dotfiles: rose-pine Claude theme, `scripts/claude-statusline.nu`, `.config/karabiner/karabiner.json`, `.config/nvim` as an out-of-store symlink to `/Volumes/nitro/nvim`) and a `programs` block of one-line imports.
+`home/home.nix` holds `home.file` (static dotfiles: rose-pine Claude theme, `scripts/claude-statusline.nu`, `.config/karabiner/karabiner.json`, `.config/nvim` as an out-of-store symlink to `/Volumes/nitro/nvim`, `.config/tuicr` from `home/tuicr/`) and a `programs` block of one-line imports.
+
+`home/tuicr/` mirrors `~/.config/tuicr` (config plus the local `themes/rose-pine.toml`) and is linked with `recursive = true`, so the directory stays writable. tuicr has no home-manager module; its package is in `pkgs/system.nix`. New files there need `git add` before switching.
 
 `home/scripts/` holds Nushell scripts referenced by path from modules: `claude-statusline.nu` (linked into `~/.claude`), `nu-base.nu` (sourced by `home/nu.nix`) and `llm-cost.nu` (sourced by the starship `custom.llm_cost` module). Put script bodies there rather than inline in a module.
 
@@ -47,5 +49,5 @@ Add a program: write `home/<file>.nix`, then add `<name> = import ./<file>.nix {
 - A tool with a `home/<file>.nix` module gets its package from `programs.<name>.enable`; don't also list it in `pkgs/system.nix`.
 - Shell integrations (atuin, zoxide, mise, starship, carapace, direnv) come from the home-manager modules. Don't add `init`/`activate` calls to `home/nu.nix`.
 - `pkgs/brew.nix` sets `onActivation.cleanup = "zap"` — deleting an entry uninstalls the app on next switch.
-- Rose-pine hex values are duplicated inline per module (`btop`, `k9s`, `lazygit`, `atuin`, `herdr`, `git` delta styles, the theme in `home/home.nix`). A palette change means editing each one; there is no shared color attrset.
+- Rose-pine hex values are duplicated inline per module (`btop`, `k9s`, `lazygit`, `atuin`, `herdr`, `git` delta styles, the theme in `home/home.nix`, `home/tuicr/themes/rose-pine.toml`). A palette change means editing each one; there is no shared color attrset.
 - Shell is Nushell (`home/nu.nix` + `home/scripts/nu-base.nu`); prompt is `home/starship.nix`.

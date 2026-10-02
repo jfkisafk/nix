@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   home = {
     username = "stelo";
@@ -48,6 +54,10 @@
           sideBySide: false
           icons: nerd-fonts-full
       '';
+      ".config/tuicr" = {
+        source = ./tuicr;
+        recursive = true;
+      };
       # Out-of-store so nvim config edits apply without a rebuild.
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Volumes/nitro/nvim";
     };

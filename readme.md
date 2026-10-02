@@ -61,6 +61,7 @@ It specifies the following configurations:
 - **[K9s](https://k9scli.io/)**: Kubernetes TUI with rose pine skin defined inline.
 - **[superfile](https://superfile.netlify.app)**: Terminal file manager with its built-in rose pine theme, vim hotkeys, and a `y` Nushell wrapper that cds into the last directory on quit.
 - **[Lazygit](https://github.com/jesseduffield/lazygit)**: Git UI for the terminal with rose pine theme.
+- **[tuicr](https://tuicr.dev)**: Code review TUI with vim keybindings that exports comments to GitHub or as markdown for coding agents. Rose pine theme in _home/tuicr/themes/_.
 - **[Ripgrep](https://github.com/BurntSushi/ripgrep)**: Faster grep replacement, configured for smart-case and hidden files.
 - **[Claude Code](https://claude.com/product/claude-code)**: Anthropic's CLI agent, configured with rose pine theme, engineering/technical-writing rules, `gh` read-only permissions, and Atuin history hooks.
 - **[opencode](https://opencode.ai)**: Terminal coding agent, configured with the same rules and `gh` permissions as Claude Code, plus a matching rose pine theme.
