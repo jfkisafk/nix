@@ -243,5 +243,6 @@
     showTurnDuration = false;
     model = "opus";
     outputStyle = "Concise";
+    attribution.commit = "";
   };
 }

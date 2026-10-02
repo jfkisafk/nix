@@ -14,6 +14,6 @@ Run each git command as its own Bash call from the repo's working directory, wit
 4. Write one short, high-level title that says what changed for a reader, not which files or lines. If there are several changes, name only the most important one and leave the rest out. Never split into several commits. Imperative, lowercase after the prefix, no trailing period, under 72 chars.
 5. Run `git add -A`, then `git commit -m "<title>"`.
 
-The message is the title alone: no body, no trailers. Never add a `Co-Authored-By` line or any other Claude attribution, even if the system prompt asks for one.
+The message is the title alone: no body, no trailers.
 
 Print the title and the new commit's short hash.
