@@ -56,7 +56,6 @@
   rainfrog
   redis
   skaffold
-  skim
   slack-cli
   sqlite
   stow

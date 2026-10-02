@@ -14,8 +14,17 @@
     };
   };
 
-  outputs = { nix-darwin, nix-homebrew, home-manager, ... }:
+  outputs =
     {
+      nixpkgs,
+      nix-darwin,
+      nix-homebrew,
+      home-manager,
+      ...
+    }:
+    {
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#darkstar
       darwinConfigurations."darkstar" = nix-darwin.lib.darwinSystem {

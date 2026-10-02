@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  generateSshKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  generateSshKey = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
       /run/current-system/sw/bin/ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -C "contact@stelo.dev"
       chmod 600 "$HOME/.ssh/id_ed25519"
@@ -9,13 +9,13 @@
     fi
   '';
 
-  sshPermissions = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  sshPermissions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ -d "$HOME/.ssh" ]; then
       chmod 700 "$HOME/.ssh"
     fi
   '';
 
-  postActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  postActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     current_shell=$(basename "$SHELL")
     if [ "$current_shell" != "nu" ]; then
       echo "Changing shell to nushell..."
@@ -26,7 +26,7 @@
   '';
 
   # After linkGeneration so mise.nix's global config exists
-  installMiseTools = lib.hm.dag.entryAfter ["linkGeneration"] ''
+  installMiseTools = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     (
     export PATH="/run/current-system/sw/bin:/usr/bin:/bin:$PATH"
     mise upgrade
@@ -35,7 +35,7 @@
   '';
 
   # herdr.nix binds ctrl+hjkl to this plugin; install needs git on PATH
-  installHerdrPlugins = lib.hm.dag.entryAfter ["linkGeneration"] ''
+  installHerdrPlugins = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     (
     export PATH="${pkgs.git}/bin:$PATH"
     if ! ${pkgs.herdr}/bin/herdr plugin list | grep -q vim-herdr-navigation; then

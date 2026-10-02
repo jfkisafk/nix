@@ -27,7 +27,7 @@
     rg = "batgrep";
     man = "batman";
     spf = "superfile";
-    # Git aliases
+
     g = "tig --all";
     ga = "git add";
     gaa = "git add .";
@@ -45,6 +45,9 @@
     gbr = "git branch -D";
     gcl = "git checkout . and git clean -d -f -x";
 
+    cr = "tuicr";
+    crw = "tuicr -w";
+
     neo = "nerdfetch";
     speed = "networkQuality -p";
   };
@@ -55,6 +58,5 @@
     LESSOPEN = "|batpipe %s";
     LESS = "-R";
     BATPIPE = "color";
-    SKIM_DEFAULT_OPTIONS = "-i --ansi --delimiter ':' --cmd-prompt ' ' --preview 'bat --style=numbers,header,grid,changes --color=always --highlight-line {2} {1}' --preview-window +{2}-/2 -c \"rg {} --line-number --colors 'path:style:intense' --colors 'match:style:intense' --colors 'line:style:intense' --smart-case --hidden --color=always --glob '!.git'\"";
   };
 }

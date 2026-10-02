@@ -91,6 +91,6 @@
       "/System/Cryptexes/App/System/Applications/Safari.app"
       "/System/Applications/System Settings.app"
     ];
-    persistent-others = [];
+    persistent-others = [ ];
   };
 }

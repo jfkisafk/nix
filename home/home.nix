@@ -87,5 +87,6 @@
     mise = import ./mise.nix { };
     zoxide = import ./zoxide.nix { };
     herdr = import ./herdr.nix { };
+    television = import ./television.nix { inherit pkgs; };
   };
 }

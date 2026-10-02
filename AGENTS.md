@@ -12,7 +12,7 @@ nix eval --raw .#darwinConfigurations.darkstar.config.system.build.toplevel.drvP
 
 `darwin-rebuild` needs no `--flake`: `hosts/darkstar/configuration.nix` links `/etc/nix-darwin` to this repo and the hostname selects `darkstar`. There is no standalone `home-manager switch` — home-manager is a darwin module, so **every** change under `home/` needs `sudo darwin-rebuild switch`.
 
-No tests, no linter. CI is `.github/workflows/gitleaks.yml` (secret scan) only.
+No tests, no linter. `nix fmt` runs `nixfmt`; `.githooks/pre-commit` runs it on staged `.nix` files and restages them (enable once per clone with `git config core.hooksPath .githooks`). CI is `.github/workflows/gitleaks.yml` (secret scan) only.
 
 ## home/
 
