@@ -5,6 +5,7 @@ comment_vim = true
 relative_line_numbers = true
 scroll_offset = 5
 editor = "nvim"
+show_commits = false
 
 # Colors are rose-pine iris, gold, and love. The first entry is the default type.
 comment_types = [
