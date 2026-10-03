@@ -14,7 +14,7 @@
     };
 
     keys = {
-      prefix = "ctrl+s";
+      prefix = "ctrl+a";
 
       split_vertical = "prefix+|";
       split_horizontal = "prefix+_";

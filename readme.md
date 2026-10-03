@@ -55,7 +55,7 @@ It specifies the following configurations:
 - **[Starship](https://starship.rs/)**: Rose pine themed prompt, including a segment for this month's Claude Code spend (_home/scripts/llm-cost.nu_).
 - **[mise](https://mise.jdx.dev)**: Global language toolchain: node, deno, dotnet, bun, yarn, python, poetry, java, rust, go, spectral, terraform.
 - **[zoxide](https://github.com/ajeetdsouza/zoxide)**: Smarter `cd`, bound to `cd` itself.
-- **[herdr](https://github.com/stelo-labs/herdr)**: Terminal workspace manager with a rose pine theme, tmux-style `ctrl+s` prefix, vim-aware ctrl+hjkl pane navigation, and sound alerts for agent completion and requests.
+- **[herdr](https://github.com/stelo-labs/herdr)**: Terminal workspace manager with a rose pine theme, tmux-style `ctrl+a` prefix, vim-aware ctrl+hjkl pane navigation, and sound alerts for agent completion and requests.
 - **[Karabiner-Elements](https://karabiner-elements.pqrs.org)**: Caps Lock as Ctrl (Esc when tapped), Tab as Hyper (Tab when tapped), Left Ctrl as Cmd+Option, and Right Cmd+hjkl as arrow keys.
 - **[Tmux](https://github.com/tmux/tmux)**: Configures tmux with rose pine status bar and custom keybindings and plugins.
 - **[K9s](https://k9scli.io/)**: Kubernetes TUI with rose pine skin defined inline.
