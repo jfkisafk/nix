@@ -9,7 +9,7 @@
   home = {
     username = "stelo";
     homeDirectory = "/Users/stelo";
-    stateVersion = "25.05";
+    stateVersion = "26.11";
     activation = import ./activation.nix { inherit pkgs lib; };
     file = {
       ".claude/themes/rose-pine.json".text = builtins.toJSON {
@@ -30,7 +30,7 @@
 
           success = "#9ccfd8";
           error = "#eb6f92";
-          warning = "#f6c177";
+          warning = "#ea9a97";
           warningShimmer = "#e0def4";
           merged = "#c4a7e7";
 

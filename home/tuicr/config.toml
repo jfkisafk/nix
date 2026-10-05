@@ -1,4 +1,5 @@
 theme = "rose-pine"
+leader = ","
 
 ignore_whitespace = true
 comment_vim = true
