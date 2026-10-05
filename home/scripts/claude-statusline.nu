@@ -1,6 +1,6 @@
 #!/usr/bin/env -S nu --stdin
 
-# Layout mirrors nvim's lualine: mode/branch pills, diff, dir | alerts, cost, effort pill.
+# Layout mirrors nvim's lualine: mode/branch pills, diff, dir | alerts, cost, IDE pill.
 
 const BASE = "25;23;36"
 const TEXT = "224;222;244"
@@ -11,7 +11,6 @@ const ROSE = "234;154;151"
 const FOAM = "156;207;216"
 const IRIS = "196;167;231"
 const PINE = "62;143;176"
-const EFFORT_COLORS = {low: $PINE, medium: $FOAM, high: $IRIS, xhigh: $GOLD, max: $LOVE}
 
 # Claude Code's own indent around the status row; COLUMNS is the full terminal width.
 const EDGE_MARGIN = 4
@@ -40,6 +39,16 @@ def rate_limit [window: any, label: string, date_format: string] {
   $"(fg $color --bold)($label) ($remaining)%($reset)($RESET)"
 }
 
+# The statusline JSON has no IDE field; a live lock file covering the cwd is what /ide would connect to.
+def ide [dir: any] {
+  if ($dir | is-empty) { return }
+  glob ($env.HOME | path join ".claude/ide/*.lock")
+  | each { |lock| try { open --raw $lock | from json } }
+  | where { |ide| $ide.workspaceFolders | any { |folder| $dir == $folder or ($dir | str starts-with $"($folder)/") } }
+  | where { |ide| (^kill -0 $ide.pid | complete).exit_code == 0 }
+  | get -o 0.ideName
+}
+
 def main [] {
   let input = (try { $in | from json } catch { {} })
   let vim_mode = $input.vim?.mode?
@@ -51,7 +60,7 @@ def main [] {
   let removed = ($input.cost?.total_lines_removed? | default 0)
   let context = $input.context_window?.used_percentage?
   let cost = $input.cost?.total_cost_usd?
-  let effort = $input.effort?.level?
+  let ide = (ide $dir)
 
   let left = [
     (pill $color (if ($vim_mode | is-empty) { $model } else { $"($vim_mode | str substring 0..0) ($model)" }))
@@ -68,7 +77,7 @@ def main [] {
     (rate_limit $input.rate_limits?.five_hour? "5h" "%-I%P")
     (rate_limit $input.rate_limits?.seven_day? "7d" "%a")
     (if ($cost | is-not-empty) { $"(fg $GOLD --bold)\u{f0d08} \$($cost | into string --decimals 2)($RESET)" })
-    (if ($effort | is-not-empty) { pill ($EFFORT_COLORS | get -o $effort | default $LOVE) $"\u{f09d1} ($effort)" --italic })
+    (if ($ide | is-empty) { pill $LOVE "\u{f06a6}" } else { pill $IRIS $"\u{f06a5} ($ide)" --italic })
   ] | join
 
   if ($right | is-empty) { print $left; return }
