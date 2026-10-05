@@ -229,6 +229,7 @@
     statusLine = {
       type = "command";
       command = "~/.claude/claude-statusline.nu";
+      hideVimModeIndicator = true;
     };
 
     enabledPlugins = {
