@@ -18,7 +18,7 @@
     };
 
     format = "$username$directory$git_branch$git_status$character";
-    right_format = "$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python\${custom.llm_cost}$time";
+    right_format = "$c$dotnet$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala$conda$python\${custom.llm_cost}$time";
 
     character = {
       format = "$symbol  ";
@@ -82,6 +82,21 @@
       format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) ";
       disabled = false;
       symbol = " ";
+    };
+
+    dotnet = {
+      style = "bg:overlay fg:pine";
+      format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) ";
+      detect_extensions = [
+        "sln"
+        "slnx"
+        "csproj"
+        "fsproj"
+        "xproj"
+      ];
+      disabled = false;
+      symbol = "󰪮 ";
+      version_format = "\${major}.\${minor}";
     };
 
     elixir = {
