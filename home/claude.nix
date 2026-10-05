@@ -10,12 +10,11 @@
       - Correctness over cleverness; simple and readable wins until profiling proves a bottleneck
       - Surface assumptions explicitly; ask only when the answer changes the implementation, otherwise state the assumption and proceed
       - Surgical: every changed line traces to the request
-      - For non-trivial changes, define verifiable success criteria before implementing
+      - Verify non-trivial changes with a concrete check (a test, an eval, the real output) before calling them done
       - Flag: N+1 queries, blocking calls in hot paths, missing indexes, unbounded result sets
       - Keep code flat: guard clauses and early returns over nested conditionals; extract a function once nesting passes two levels
-      - Favor composition over inheritance
       - Prefer minor repetition over premature abstraction; colocate logic with its data, no speculative utils
-      - Comments explain *why*, never *what* — lean on clear naming. One line where possible; no restating the code, no boilerplate docstrings, no change-history notes
+      - Default to no comment; most changes need none. If code seems to need one, try a clearer name or a named intermediate value first. Add one only when a reader would otherwise get the code wrong (a workaround, a non-obvious constraint), and then explain *why*, never *what*, in one line. No restating the code, no boilerplate docstrings, no change-history notes
     '';
 
     technical-writing = ''
@@ -26,7 +25,7 @@
       - Calibrate to the reader (operator vs developer vs end user)
       - Every sentence earns its place; no preamble, recap, sign-off offers, or filler transitions
       - Prose by default; bullets or headers only for real lists, steps, or reference material
-      - Show examples, commands, expected output
+      - Show examples, commands, and expected output where the reader will act on them
       - Imperative voice: "Run `x` to…"
       - Plain words over inflated ones; no stock rhetorical patterns, reflexive triplets, scattered bold, or emoji
       - Em dashes sparingly
@@ -37,7 +36,7 @@
 
       Agents on all of the user's machines share memory via the `memory` MCP server. Subagents skip this, as does any session where the memory tools aren't available.
 
-      - Before your first other tool call in a non-trivial task, call `mcp__plugin_hm_memory__qdrant-find` with the repo name and topic. Do this without asking.
+      - Before reading or editing project files for any task beyond a one-line answer, call `mcp__plugin_hm_memory__qdrant-find` with the repo name and topic; another machine's agent may already have solved it.
       - Before finishing, if you learned something another agent couldn't cheaply rediscover, call `mcp__plugin_hm_memory__qdrant-store`, following its tool description.
     '';
   };
@@ -87,8 +86,14 @@
       is what they missed.
 
       Scope: only what the caller names, plus its direct callers and
-      callees. If the target is unclear, say so and stop. Read-only. Run
-      builds or tests only to confirm a specific finding.
+      callees. If the target is unclear, say so and stop.
+
+      Read-only: write only to a scratch directory under /tmp, and never
+      stop or signal running processes or start containers or servers.
+      Inspect files with Read, Grep, and Glob; keep Bash for git and for
+      running things. Settle findings by reading the code. Run something
+      only when it takes seconds and reading can't decide the question,
+      and mark findings you didn't run as unconfirmed.
 
       Attack:
 
@@ -100,9 +105,10 @@
       - For plans or arguments: unstated premises, unjustified leaps,
         ignored alternatives
 
-      Report at most 5 holes, most severe first, each backed by concrete
-      evidence. For each, give file:line or the quoted claim, the exact
-      failure scenario, and a severity (critical/high/medium/low). Describe
+      Report the holes that matter, most severe first, each backed by
+      concrete evidence; leave out low-severity nits. For each, give
+      file:line or the quoted claim, the exact failure scenario, and a
+      severity (critical/high/medium/low). Describe
       the hole; don't fix it or propose rewrites. If you find nothing, say so.
     '';
   };
@@ -215,12 +221,18 @@
       ];
     };
 
+    env = {
+      CLAUDE_CODE_PLUGIN_DIRS = "~/.claude/mods/cost-ledger";
+      DISABLE_AUTOUPDATER = "1";
+    };
+
     statusLine = {
       type = "command";
       command = "~/.claude/claude-statusline.nu";
     };
 
     enabledPlugins = {
+      "cc-plugin-you-should-know@builtin" = true;
       "code-review@claude-plugins-official" = true;
       "code-simplifier@claude-plugins-official" = true;
       "csharp-lsp@claude-plugins-official" = true;

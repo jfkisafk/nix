@@ -1,0 +1,5 @@
+{
+  "name": "cost-ledger",
+  "version": "0.1.0",
+  "description": "Adds each session's spend to the monthly cost table that starship's llm_cost module reads"
+}

@@ -186,7 +186,7 @@
     };
 
     claude_model = {
-      style = "bold iris";
+      style = "bold rose";
       symbol = "󰧱 ";
     };
 
@@ -195,9 +195,29 @@
       display = [
         {
           threshold = 0;
-          style = "bold rose";
+          style = "bold gold";
         }
       ];
     };
+
+    claude_context.display = [
+      {
+        threshold = 0;
+        style = "bold foam";
+        hidden = true;
+      }
+      {
+        threshold = 30;
+        style = "bold foam";
+      }
+      {
+        threshold = 60;
+        style = "bold gold";
+      }
+      {
+        threshold = 80;
+        style = "bold love";
+      }
+    ];
   };
 }

@@ -13,6 +13,11 @@
       "/nix/var/nix/profiles/default/bin"
       "/opt/homebrew/bin"
       $"($env.HOME)/.local/share/nvim/mason/bin"
+      # home-manager's mise init is generated in the Nix sandbox and overwrites PATH without these
+      "/usr/bin"
+      "/bin"
+      "/usr/sbin"
+      "/sbin"
     ] | uniq)
 
     $env.DOTNET_ROOT = $"($env.HOME)/.local/share/mise/installs/dotnet/10"

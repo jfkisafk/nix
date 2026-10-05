@@ -16,30 +16,60 @@
         name = "Rose Pine";
         base = "dark-ansi";
         overrides = {
-          claude = "#c4a7e7";
-          error = "#eb6f92";
-          success = "#9ccfd8";
-          warning = "#f6c177";
-          diffAdded = "#3e8fb0";
-          diffRemoved = "#eb6f92";
-          promptBorder = "#31748f";
-          planMode = "#ea9a97";
+          claude = "#ea9a97";
+          claudeShimmer = "#f6c177";
           text = "#e0def4";
+          inverseText = "#191724";
           inactive = "#6e6a86";
-          userMessageBackground = "#393552";
-          claudeShimmer = "#907aa9";
           inactiveShimmer = "#908caa";
-          permissionShimmer = "#b4637a";
-          warningShimmer = "#ea9d34";
-          promptBorderShimmer = "#3e8fb0";
-          fastModeShimmer = "#d7827e";
-          autoAcceptShimmer = "#56949f";
+          subtle = "#524f67";
+          suggestion = "#9ccfd8";
+          permission = "#c4a7e7";
+          permissionShimmer = "#e0def4";
+          remember = "#c4a7e7";
+
+          success = "#9ccfd8";
+          error = "#eb6f92";
+          warning = "#f6c177";
+          warningShimmer = "#e0def4";
+          merged = "#c4a7e7";
+
+          promptBorder = "#403d52";
+          promptBorderShimmer = "#6e6a86";
+          planMode = "#9ccfd8";
+          autoAccept = "#3e8fb0";
+          bashBorder = "#eb6f92";
+          ide = "#3e8fb0";
+          fastMode = "#f6c177";
+          fastModeShimmer = "#e0def4";
+          effortUltra = "#c4a7e7";
+
+          # All diff backgrounds match base so no line or word bands are drawn.
+          diffAdded = "#191724";
+          diffRemoved = "#191724";
+          diffAddedWord = "#191724";
+          diffRemovedWord = "#191724";
+          diffAddedDimmed = "#191724";
+          diffRemovedDimmed = "#191724";
+
+          userMessageBackground = "#26233a";
+          userMessageBackgroundHover = "#393552";
+          bashMessageBackgroundColor = "#2a273f";
+          memoryBackgroundColor = "#21202e";
+          selectionBg = "#403d52";
+
+          rate_limit_fill = "#c4a7e7";
+          rate_limit_empty = "#403d52";
+          briefLabelYou = "#9ccfd8";
+          briefLabelClaude = "#ea9a97";
         };
       };
       ".claude/claude-statusline.nu" = {
         source = ./scripts/claude-statusline.nu;
         executable = true;
       };
+      # Linked whole: Claude Code rejects plugin files that resolve outside the plugin dir.
+      ".claude/mods/cost-ledger".source = ./claude-mods/cost-ledger;
       ".config/karabiner/karabiner.json".source = import ./karabiner.nix { inherit pkgs; };
       # opencode is yargs-based and ships no zsh/fish/bash completion file for CARAPACE_BRIDGES to find
       "Library/Application Support/carapace/specs/opencode.yaml".text = ''
