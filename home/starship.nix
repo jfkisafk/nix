@@ -95,6 +95,7 @@
         "xproj"
       ];
       disabled = false;
+      heuristic = false;
       symbol = "󰪮 ";
       version_format = "\${major}.\${minor}";
     };
