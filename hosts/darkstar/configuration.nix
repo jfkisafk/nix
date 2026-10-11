@@ -16,6 +16,7 @@
 
   # Enable sudo authentication via Touch ID.
   security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.reattach = true;
 
   # Run tailscaled as a persistent launchd daemon.
   services.tailscale.enable = true;
