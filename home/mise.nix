@@ -1,6 +1,6 @@
 { ... }: {
   enable = true;
-  enableMutableConfig = true;
+  mutableSettings = true;
   globalConfig = {
     settings.python.compile = false;
     tools = {
