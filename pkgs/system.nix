@@ -1,6 +1,5 @@
 { pkgs, ... }: with pkgs;
 [
-  azure-cli
   buildkit
   diffnav
   docker

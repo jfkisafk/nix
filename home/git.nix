@@ -82,5 +82,6 @@
     commit.gpgsign = true;
     tag.gpgsign = true;
     gui.skipDiscardChangeWarning = true;
+    credential.azreposCredentialType = "oauth";
   };
 }

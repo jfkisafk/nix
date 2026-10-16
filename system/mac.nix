@@ -88,7 +88,7 @@
       "/Applications/Copilot.app"
       "/System/Applications/Mail.app"
       "/System/Applications/Messages.app"
-      "/System/Cryptexes/App/System/Applications/Safari.app"
+      "/Applications/Helium.app"
       "/System/Applications/System Settings.app"
     ];
     persistent-others = [ ];
