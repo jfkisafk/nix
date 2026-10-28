@@ -32,8 +32,8 @@
     };
   };
 
-  tui = {
-    theme = "rose-pine";
+  cli = {
+    theme.name = "rose-pine";
   };
 
   themes = {

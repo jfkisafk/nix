@@ -59,12 +59,20 @@
     ShowDate = 0;
     ShowDayOfWeek = true;
   };
-  screencapture.location = "/tmp/";
+  screencapture = {
+    location = "/tmp/";
+    type = "png";
+    show-thumbnail = false;
+    include-date = true;
+    target = "clipboard";
+  };
   screensaver = {
     askForPassword = true;
     askForPasswordDelay = 900;
   };
   SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+  universalaccess.reduceTransparency = true;
+  CustomUserPreferences."com.apple.universalaccess".contrast = 0.20;
   trackpad = {
     ActuationStrength = 1;
     Clicking = true;
@@ -82,6 +90,10 @@
     launchanim = true;
     orientation = "bottom";
     tilesize = 40;
+    wvous-tl-corner = 4;
+    wvous-tr-corner = 2;
+    wvous-bl-corner = 5;
+    wvous-br-corner = 10;
     persistent-apps = [
       "/System/Applications/Apps.app"
       "/Applications/Ghostty.app"

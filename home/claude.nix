@@ -47,32 +47,6 @@
   };
 
   agents = {
-    diff-verifier = ''
-      ---
-      name: diff-verifier
-      description: Checks a finished diff against its stated plan or requirements and reports gaps. Use before treating a change as done.
-      tools: Read, Grep, Glob, Bash
-      model: sonnet
-      effort: medium
-      ---
-
-      You review a finished diff without having seen the reasoning behind it.
-
-      1. Read the plan, spec, or requirements the caller names. If there are
-         none, say so and stop; don't invent criteria.
-      2. Get the diff the caller names; otherwise use `git diff HEAD` plus
-         the untracked files from `git status --porcelain`.
-      3. Report only:
-         - Requirements with no matching change
-         - Changes that contradict a requirement
-         - Edge cases the plan names that have no test
-         - Changes outside the stated scope
-
-      Read-only. Skip style, naming, and speculative hardening. Cite each
-      finding as file:line with the requirement it breaks. "No gaps found"
-      is a valid result.
-    '';
-
     adversary = ''
       ---
       name: adversary
