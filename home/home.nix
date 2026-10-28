@@ -83,7 +83,7 @@
           hideHeader: true
           sideBySide: false
           icons: nerd-fonts-full
-          theme: nord
+          theme: catppuccin_mocha
       '';
       ".config/tuicr" = {
         source = ./tuicr;
