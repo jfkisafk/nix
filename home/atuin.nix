@@ -1,5 +1,7 @@
-{ ... }: {
+{ pkgs, ... }: {
   enable = true;
+  # 18.24.4's e2e_ai_sessions tests fail in the Nix sandbox
+  package = pkgs.atuin.overrideAttrs { doCheck = false; };
 
   settings = {
     enter_accept = true;

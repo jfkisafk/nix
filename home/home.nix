@@ -96,7 +96,7 @@
 
   programs = {
     home-manager.enable = true;
-    atuin = import ./atuin.nix { };
+    atuin = import ./atuin.nix { inherit pkgs; };
     awscli = import ./aws.nix { };
     nushell = import ./nu.nix { };
     starship = import ./starship.nix { };

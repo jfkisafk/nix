@@ -21,6 +21,7 @@
     "neat"
     "raycast"
     "signal"
+    "steam"
     "tickernotch"
     "zoom"
   ];
