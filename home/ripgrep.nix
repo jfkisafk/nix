@@ -2,11 +2,11 @@
   enable = true;
 
   arguments = [
-    "--glob '!.git'"
+    "--glob=!.git"
     "--line-number"
-    "--colors 'path:style:intense'"
-    "--colors 'line:style:intense'"
-    "--colors 'match:style:intense'"
+    "--colors=path:style:intense"
+    "--colors=line:style:intense"
+    "--colors=match:style:intense"
     "--smart-case"
     "--hidden"
   ];
