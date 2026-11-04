@@ -117,6 +117,7 @@
         "Bash(nix flake metadata:*)"
         "Bash(nix path-info:*)"
         "Bash(darwin-rebuild --list-generations:*)"
+        "Bash(just deploy)"
         "Skill(commit)"
         "mcp__plugin_hm_memory__qdrant-find"
         "mcp__plugin_hm_memory__qdrant-store"

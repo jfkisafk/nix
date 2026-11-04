@@ -5,7 +5,7 @@
 ## Commands
 
 ```sh
-sudo darwin-rebuild switch   # apply everything (system, brew, fonts, home)
+just deploy                  # sudo darwin-rebuild switch: apply everything (system, brew, fonts, home)
 sudo darwin-rebuild check    # evaluate without applying
 nix eval --raw .#darwinConfigurations.darkstar.config.system.build.toplevel.drvPath   # evaluate without root; run from repo root
 ```

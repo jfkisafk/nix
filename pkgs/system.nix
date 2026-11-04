@@ -18,6 +18,7 @@
   istioctl
   jq
   jqp
+  just
   jwt-cli
   kind
   kubectl-ktop
