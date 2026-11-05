@@ -65,7 +65,6 @@ It specifies the following configurations:
 - **[television](https://alexpasmantier.github.io/television/)**: Fuzzy finder (`tv`) with its built-in rose pine theme and community channels for Kubernetes, Docker, GitHub, git, Nushell history and processes.
 - **[Ripgrep](https://github.com/BurntSushi/ripgrep)**: Faster grep replacement, configured for smart-case and hidden files.
 - **[Claude Code](https://claude.com/product/claude-code)**: Anthropic's CLI agent, configured with rose pine theme, engineering/technical-writing rules, `gh` read-only permissions, Atuin history hooks, a status line showing rate-limit windows, and a `cost-ledger` mod (_home/claude-mods/_) that records spend for the Starship segment.
-- **[opencode](https://opencode.ai)**: Terminal coding agent, configured with the same rules and `gh` permissions as Claude Code, plus a matching rose pine theme.
 - **[Ghostty](https://ghostty.org)**: GPU-accelerated terminal emulator, themed rose pine (light/dark), JetbrainsMono Nerd Font.
 
 > [!NOTE]

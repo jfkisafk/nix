@@ -41,8 +41,6 @@ Each `home/<file>.nix` is `{ ... }: { enable = true; ... }`, or `{ pkgs, ... }:`
 
 Add a program: write `home/<file>.nix`, then add `<name> = import ./<file>.nix { };` to `programs` in `home/home.nix`, passing `{ inherit pkgs; }` only if the module takes `pkgs`. Copy `home/bat.nix` (minimal) or `home/git.nix` (full) for shape.
 
-`opencode.nix` reads the engineering and technical-writing rules from `claude.nix`; edit them there only.
-
 `home/activation.nix` is the exception — `home.activation`, imported with `{ inherit pkgs lib; }`, entries are `lib.hm.dag.entryAfter ["writeBoundary"] ''…''`. Runs on every switch: SSH keygen + `gh ssh-key add`, `chsh` to `nu`, `mise upgrade`/`prune` against the tool list in `home/mise.nix`, and installing the `vim-herdr-navigation` herdr plugin that `home/herdr.nix` binds to ctrl+hjkl. Entries that read files written by home-manager use `entryAfter ["linkGeneration"]`.
 
 ## Conventions

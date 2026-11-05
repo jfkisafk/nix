@@ -71,13 +71,6 @@
       # Linked whole: Claude Code rejects plugin files that resolve outside the plugin dir.
       ".claude/mods/cost-ledger".source = ./claude-mods/cost-ledger;
       ".config/karabiner/karabiner.json".source = import ./karabiner.nix { inherit pkgs; };
-      # opencode is yargs-based and ships no zsh/fish/bash completion file for CARAPACE_BRIDGES to find
-      "Library/Application Support/carapace/specs/opencode.yaml".text = ''
-        name: opencode
-        parsing: disabled
-        completion:
-          positionalany: ["$carapace.bridge.Yargs([opencode])"]
-      '';
       ".config/diffnav/config.yml".text = ''
         ui:
           hideHeader: true
@@ -113,7 +106,6 @@
     k9s = import ./k9s.nix { };
     ripgrep = import ./ripgrep.nix { };
     claude-code = import ./claude.nix { };
-    opencode = import ./opencode.nix { };
     ghostty = import ./ghostty.nix { };
     mise = import ./mise.nix { };
     zoxide = import ./zoxide.nix { };

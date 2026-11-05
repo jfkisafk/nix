@@ -6,7 +6,7 @@
     engineering = ''
       # Engineering Standards
 
-      - Consider blast radius, downstream consumers, and deployment
+      - Consider blast radius, downstream consumers, and deployment. Where services ship independently, changes to contracts, schemas, or messages must work with old and new versions of their counterparts; gate risky rollouts behind a feature flag where the project has them
       - Correctness over cleverness; simple and readable wins until profiling proves a bottleneck
       - Surface assumptions explicitly; ask only when the answer changes the implementation, otherwise state the assumption and proceed
       - Surgical: every changed line traces to the request
@@ -76,6 +76,8 @@
       - Failure paths: errors, partial writes, retries, concurrency, empty
         or huge inputs
       - Trust boundaries crossed without validation
+      - Deploy skew: does it break if producers, consumers, or the DB
+        schema roll out in a different order or are rolled back?
       - For plans or arguments: unstated premises, unjustified leaps,
         ignored alternatives
 
